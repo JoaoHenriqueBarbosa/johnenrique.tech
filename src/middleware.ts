@@ -1,10 +1,14 @@
-import type { NextRequest } from "next/server";
-import { i18nMiddleware } from "./server/i18n-middleware";
+import createMiddleware from 'next-intl/middleware';
 
-export const middleware = (request: NextRequest) => {
-  return i18nMiddleware(request);
-};
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: ['en', 'pt-BR'],
+  
+  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+  defaultLocale: 'en'
+});
 
 export const config = {
-  matcher: ["/", `/(en|de)/:path*`],
+  // Skip all paths that should not be internationalized
+  matcher: ['/((?!api|_next|.*\\..*).*)']
 };

@@ -2,19 +2,11 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { notFound } from 'next/navigation';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export async function generateStaticParams() {
-  const contentDir = path.join(process.cwd(), 'src', 'content');
-  const files = await fs.readdir(contentDir);
-  return files
-    .filter(file => file.endsWith('.mdx'))
-    .map(file => ({
-      slug: file.replace(/\.mdx$/, ''),
-    }));
-}
-
-export default async function Page({ params }: { params: { slug: string } }) {
-  const contentDir = path.join(process.cwd(), 'src', 'content');
+export default async function Page({ params }: { params: { slug: string; locale: string } }) {
+  unstable_setRequestLocale(params.locale);
+  const contentDir = path.join(process.cwd(), 'src', 'content', params.locale);
   const filePath = path.join(contentDir, `${params.slug}.mdx`);
 
   if (!filePath.endsWith('.mdx')) {

@@ -5,7 +5,7 @@ import { NotFound } from "./_components/not-found";
 
 const NotFoundPage: FC = () => {
   const locale = useLocale();
-
+  
   return <NotFound locale={locale} />;
 };
 
