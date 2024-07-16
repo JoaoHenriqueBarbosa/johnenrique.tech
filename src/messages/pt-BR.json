@@ -1,0 +1,15 @@
+{
+  "home": {
+    "meta": {
+      "title": "John Enrique",
+      "description": "Site pessoal de John Enrique"
+    },
+    "heading": "Bem-vindo ao site pessoal de John Enrique"
+  },
+  "notFound": {
+    "meta": {
+      "title": "Page not found"
+    },
+    "heading": "Page not found"
+  }
+}
