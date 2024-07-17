@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function Header() {
   const [scroll, setScroll] = useState(false);
@@ -61,7 +62,8 @@ export function Header() {
           >
             {t('nav.contact')}
           </Link>
-          <Button size="lg" className="hidden md:inline-flex text-md">
+          <LanguageSwitcher />
+          <Button size="lg" className="hidden md:inline-flex text-md ml-4">
             {t('cta')}
           </Button>
         </nav>
@@ -95,7 +97,8 @@ export function Header() {
               >
                 {t('nav.contact')}
               </Link>
-              <Button size="sm">{t('cta')}</Button>
+              <LanguageSwitcher />
+              <Button size="sm" className="mt-4">{t('cta')}</Button>
             </div>
           </SheetContent>
         </Sheet>
