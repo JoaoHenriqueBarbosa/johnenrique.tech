@@ -1,10 +1,14 @@
 {
   "home": {
     "meta": {
-      "title": "John Enrique",
-      "description": "Site pessoal de John Enrique"
+      "title": "John Enrique - Site Pessoal",
+      "description": "Bem-vindo ao site pessoal de John Enrique. Explore meus projetos, blog e mais."
     },
-    "heading": "Bem-vindo ao site pessoal de John Enrique"
+    "heading": "Bem-vindo ao Site Pessoal de John Enrique",
+    "hero": {
+      "subtitle": "Desenvolvedor de Software & Entusiasta de Tecnologia",
+      "cta": "Explore Meu Trabalho"
+    }
   },
   "notFound": {
     "meta": {
