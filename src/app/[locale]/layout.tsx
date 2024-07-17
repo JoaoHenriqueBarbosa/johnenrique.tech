@@ -13,9 +13,5 @@ export default async function RootLayout({
   params: { locale },
 }: PropsWithChildren<{ params: { locale: string } }>) {
   unstable_setRequestLocale(locale);
-  return (
-    <html>
-      <body>{children}</body>
-    </html>
-  );
+  return <html lang={locale}>{children}</html>;
 }

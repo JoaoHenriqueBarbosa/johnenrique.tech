@@ -1,13 +1,30 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
+import { HomePage } from "@/components/home-page";
+import { cn } from "@/lib/utils";
+import { unstable_setRequestLocale } from "next-intl/server";
+import Link from "next/link";
+import { Inter as FontSans } from "next/font/google";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
 export default async function Page({ params }: { params: { locale: string } }) {
   unstable_setRequestLocale(params.locale);
+
   return (
-    <div>
-      <h1>Page</h1>
-      <Link href={`/${params.locale}/blog`}>
-        Go to blog
-      </Link>
-    </div>
+    <>
+      <head>
+        <title>Page</title>
+      </head>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <HomePage />
+      </body>
+    </>
   );
 }
