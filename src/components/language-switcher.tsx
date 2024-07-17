@@ -24,7 +24,7 @@ export function LanguageSwitcher() {
 
   return (
     <div className="flex space-x-2">
-      <DropdownMenu>
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger>
           <Button variant="ghost" className="hover:bg-primary/20 px-2">
             <GlobeIcon className="h-5 w-5 text-white drop-shadow" />
