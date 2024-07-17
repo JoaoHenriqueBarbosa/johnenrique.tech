@@ -5,9 +5,11 @@ import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from 'next-intl';
 
 export function Header() {
   const [scroll, setScroll] = useState(false);
+  const t = useTranslations('header');
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -19,21 +21,21 @@ export function Header() {
     <header
       className={cn(
         "w-full fixed px-4 top-0 z-30 header",
-        scroll ? "glassmorphic-dark" : "glassmorphic"
+        scroll ? "header-glass-dark" : "header-glass"
       )}
     >
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Avatar className="w-12 h-12">
             <AvatarImage src="/john.jpg" />
-            <AvatarFallback>JE</AvatarFallback>
+            <AvatarFallback>{t("initials")}</AvatarFallback>
           </Avatar>
           <div>
             <h1 className="text-2xl font-bold text-white drop-shadow-xl">
-              John Enrique
+              {t('name')}
             </h1>
             <p className="text-sm text-white drop-shadow-xl">
-              Full-Stack Developer
+              {t('role')}
             </p>
           </div>
         </div>
@@ -43,24 +45,24 @@ export function Header() {
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
           >
-            Work
+            {t('nav.work')}
           </Link>
           <Link
             href="#"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
           >
-            About
+            {t('nav.about')}
           </Link>
           <Link
             href="#"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
           >
-            Contact
+            {t('nav.contact')}
           </Link>
           <Button size="lg" className="hidden md:inline-flex text-md">
-            Hire Me
+            {t('cta')}
           </Button>
         </nav>
         <Sheet>
@@ -77,23 +79,23 @@ export function Header() {
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
               >
-                Work
+                {t('nav.work')}
               </Link>
               <Link
                 href="#"
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
               >
-                About
+                {t('nav.about')}
               </Link>
               <Link
                 href="#"
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
               >
-                Contact
+                {t('nav.contact')}
               </Link>
-              <Button size="sm">Hire Me</Button>
+              <Button size="sm">{t('cta')}</Button>
             </div>
           </SheetContent>
         </Sheet>

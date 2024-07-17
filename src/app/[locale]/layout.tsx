@@ -2,7 +2,8 @@ import type { PropsWithChildren } from "react";
 
 import "@/globals.css";
 import { locales } from "@/i18n";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -13,5 +14,12 @@ export default async function RootLayout({
   params: { locale },
 }: PropsWithChildren<{ params: { locale: string } }>) {
   unstable_setRequestLocale(locale);
-  return <html lang={locale}>{children}</html>;
+  const messages = await getMessages({ locale });
+  return (
+    <html lang={locale}>
+      <NextIntlClientProvider messages={messages}>
+        {children}
+      </NextIntlClientProvider>
+    </html>
+  );
 }

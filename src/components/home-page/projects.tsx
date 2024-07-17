@@ -1,19 +1,22 @@
 import Link from "next/link";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 export function Projects() {
+  const t = useTranslations('projects');
+
   return (
     <section
       id="projects"
-      className="bg-muted pb-12 md:pb-20 px-6 mt-[-60px]"
+      className="bg-muted pb-12 md:pb-20 px-6 mt-[-100px] mb-[-100px]"
     >
       <div className="container max-w-5xl mx-auto space-y-8">
         <div className="text-center space-y-4 relative z-20">
           <h2 className="text-3xl md:text-4xl font-bold">
-            Featured Projects
+            {t('heading')}
           </h2>
           <p className="text-muted-foreground">
-            Check out some of my recent web development projects.
+            {t('description')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -41,7 +44,7 @@ export function Projects() {
 
 function ProjectCard({ title, description }: { title: string; description: string }) {
   return (
-    <Card>
+    <Card className="z-20">
       <CardHeader>
         <img
           src="/placeholder.svg"

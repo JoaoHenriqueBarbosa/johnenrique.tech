@@ -1,14 +1,31 @@
 {
   "home": {
     "meta": {
-      "title": "John Enrique - Site Pessoal",
-      "description": "Bem-vindo ao site pessoal de John Enrique. Explore meus projetos, blog e mais."
+      "title": "João Henrique - Site Pessoal",
+      "description": "Bem-vindo ao site pessoal de João Henrique. Explore meus projetos, blog e mais."
     },
-    "heading": "Bem-vindo ao Site Pessoal de John Enrique",
-    "hero": {
-      "subtitle": "Desenvolvedor de Software & Entusiasta de Tecnologia",
-      "cta": "Explore Meu Trabalho"
-    }
+    "heading": "Bem-vindo ao Site Pessoal de João Henrique"
+  },
+  "header": {
+    "initials": "JH",
+    "name": "João Henrique",
+    "role": "Desenvolvedor Full-Stack",
+    "nav": {
+      "work": "Trabalhos",
+      "about": "Sobre",
+      "contact": "Contato"
+    },
+    "cta": "Contrate-me"
+  },
+  "hero": {
+    "heading": "Criando Excepcionais",
+    "typedWords": "Ferramentas de IA,Sistemas Complexos,Aplicações Web,Designs,Integrações",
+    "description": "Sou um Desenvolvedor Full-Stack apaixonado, com um olhar atento aos detalhes e comprometido em criar experiências bonitas, performáticas e amigáveis ao usuário",
+    "cta": "Ver Meus Trabalhos"
+  },
+  "projects": {
+    "heading": "Projetos Recentes",
+    "description": "Veja alguns dos meus trabalhos mais recentes"
   },
   "notFound": {
     "meta": {

@@ -1,7 +1,6 @@
 import { HomePage } from "@/components/home-page";
 import { cn } from "@/lib/utils";
 import { unstable_setRequestLocale } from "next-intl/server";
-import Link from "next/link";
 import { Inter as FontSans } from "next/font/google";
 
 const fontSans = FontSans({

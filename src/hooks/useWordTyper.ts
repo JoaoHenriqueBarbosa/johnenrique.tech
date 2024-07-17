@@ -20,7 +20,7 @@ export const useWordTyper = (words: string[]) => {
         }
       } else {
         if (isWordComplete) {
-          setTimeout(() => setIsDeleting(true), 1000); // Pause before deleting
+          setTimeout(() => setIsDeleting(true), 2000); // Pause before deleting
         } else {
           setDisplayedText(currentWord.slice(0, displayedText.length + 1));
         }

@@ -1,29 +1,64 @@
+import Image from "next/image";
+import { Button } from "../ui/button";
+
 export function Skills() {
   return (
-    <section id="skills" className="bg-background py-12 md:py-20 px-6">
-      <div className="container max-w-5xl mx-auto space-y-8">
-        <div className="text-center space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold">My Skills</h2>
-          <p className="text-muted-foreground">
-            Here are some of the technologies I'm proficient in.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <SkillIcon icon={CodepenIcon} name="React" />
-          <SkillIcon icon={CodepenIcon} name="Next.js" />
-          <SkillIcon icon={WindIcon} name="Tailwind CSS" />
-          <SkillIcon icon={CodepenIcon} name="Node.js" />
-          <SkillIcon icon={DatabaseIcon} name="MongoDB" />
-          <SkillIcon icon={DatabaseIcon} name="PostgreSQL" />
-          <SkillIcon icon={GitGraphIcon} name="Git" />
-          <SkillIcon icon={DockIcon} name="Docker" />
+    <section id="skills" className="relative w-full">
+      <Image
+        src="/holo-2.webp"
+        alt="Hero Image"
+        width={1120}
+        height={630}
+        quality={100}
+        className="h-[40vh] w-full object-cover object-center md:h-[60vh]"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-muted/100 via-transparent to-muted/100" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-4 container max-w-5xl mx-auto space-y-8">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12">
+          <div className="flex flex-col items-center justify-center">
+              <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                My Skills
+              </h2>
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                <div className="text-white rounded-lg glassmorphic p-4 shadow-xl">
+                  <CodepenIcon className="h-8 w-8" />
+                  <h3 className="mt-2 text-lg font-semibold text-white">
+                    Figma
+                  </h3>
+                </div>
+                <div className="text-white rounded-lg glassmorphic p-4 shadow-xl">
+                  <DatabaseIcon className="h-8 w-8" />
+                  <h3 className="mt-2 text-lg font-semibold text-white">
+                    Photoshop
+                  </h3>
+                </div>
+                <div className="text-white rounded-lg glassmorphic p-4 shadow-xl">
+                  <DockIcon className="h-8 w-8" />
+                  <h3 className="mt-2 text-lg font-semibold text-white">
+                    Illustrator
+                  </h3>
+                </div>
+                <div className="text-white rounded-lg glassmorphic p-4 shadow-xl">
+                  <GitGraphIcon className="h-8 w-8" />
+                  <h3 className="mt-2 text-lg font-semibold text-white">
+                    Adobe XD
+                  </h3>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </section>
   );
 }
 
-function SkillIcon({ icon: Icon, name }: { icon: React.ComponentType<React.SVGProps<SVGSVGElement>>, name: string }) {
+function SkillIcon({
+  icon: Icon,
+  name,
+}: {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  name: string;
+}) {
   return (
     <div className="flex flex-col items-center gap-2">
       <Icon className="w-12 h-12 text-primary" />

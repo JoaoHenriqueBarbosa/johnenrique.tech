@@ -4,11 +4,28 @@
       "title": "John Enrique - Personal Website",
       "description": "Welcome to John Enrique's personal website. Explore my projects, blog, and more."
     },
-    "heading": "Welcome to John Enrique's Personal Website",
-    "hero": {
-      "subtitle": "Software Developer & Tech Enthusiast",
-      "cta": "Explore My Work"
-    }
+    "heading": "Welcome to John Enrique's Personal Website"
+  },
+  "header": {
+    "initials": "JE",
+    "name": "John Enrique",
+    "role": "Full-Stack Developer",
+    "nav": {
+      "work": "Work",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "cta": "Hire Me"
+  },
+  "hero": {
+    "heading": "Crafting Exceptional",
+    "typedWords": "AI Tools,Complex Systems,Web Apps,Designs,Middlewares",
+    "description": "I'm a passionate Full-Stack Developer with a keen eye for detail and a commitment to creating beautiful, performant, and user-friendly experiences",
+    "cta": "View My Work"
+  },
+  "projects": {
+    "heading": "Featured Projects",
+    "description": "Check out some of my recent projects"
   },
   "notFound": {
     "meta": {
