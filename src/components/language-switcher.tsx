@@ -25,10 +25,8 @@ export function LanguageSwitcher() {
   return (
     <div className="flex space-x-2">
       <DropdownMenu modal={false}>
-        <DropdownMenuTrigger>
-          <Button variant="ghost" className="hover:bg-primary/20 px-2">
-            <GlobeIcon className="h-5 w-5 text-white drop-shadow" />
-          </Button>
+        <DropdownMenuTrigger className="hover:bg-primary/20 px-2 py-2 rounded">
+          <GlobeIcon className="h-5 w-5 text-white drop-shadow" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
             <DropdownMenuGroup>

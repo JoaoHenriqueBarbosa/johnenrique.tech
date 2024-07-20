@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 export function Projects() {
   const t = useTranslations('projects');
-
+  const locale = useLocale();
+  
   return (
     <section
       id="projects"
