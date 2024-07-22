@@ -32,5 +32,12 @@
       "title": "Página não encontrada"
     },
     "heading": "Página não encontrada"
+  },
+  "projectPage": {
+    "visitProject": "Visitar Projeto",
+    "viewOnGitHub": "Ver no GitHub",
+    "readme": "README",
+    "readmeplaceholder": "Carregando conteúdo do README...",
+    "features": "Funcionalidades"
   }
 }

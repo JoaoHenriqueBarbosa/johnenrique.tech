@@ -12,7 +12,8 @@ export const pathnames = {
   "/": "/",
   "/about": "/about",
   "/blog": "/blog",
-  "/blog/[slug]": "/blog/[slug]"
+  "/blog/[slug]": "/blog/[slug]",
+  "/projects/[slug]": "/projects/[slug]"
 };
 
 export const { Link, redirect, usePathname, useRouter, getPathname } =
