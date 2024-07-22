@@ -31,6 +31,15 @@ export function Readme({ url }: { url: string }) {
                   {props.children}
                 </h2>
               ),
+              p: ({children, ...props}: any) => {
+                const videoRegex = /https:\/\/github\.com\/user-attachments\/assets\/[a-zA-Z0-9-]+/g;
+                if (videoRegex.test(children)) {
+                  return <video src={children} {...props} controls />
+                } else if (children.toString().startsWith("🌐")) {
+                    return <></>
+                }
+                return <p {...props}>{children}</p>
+              },
             },
           }}
         >
