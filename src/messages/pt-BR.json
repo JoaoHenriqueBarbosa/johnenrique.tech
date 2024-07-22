@@ -6,6 +6,10 @@
     },
     "heading": "Bem-vindo ao Site Pessoal de João Henrique"
   },
+  "common": {
+    "home": "Início",
+    "projects": "Projetos"
+  },
   "header": {
     "initials": "JH",
     "name": "João Henrique",
@@ -25,7 +29,9 @@
   },
   "projects": {
     "heading": "Projetos Recentes",
-    "description": "Veja alguns dos meus trabalhos mais recentes"
+    "description": "Veja alguns dos meus trabalhos mais recentes",
+    "readMore": "Ver Mais",
+    "liveDemo": "Demonstração"
   },
   "notFound": {
     "meta": {
@@ -34,7 +40,7 @@
     "heading": "Página não encontrada"
   },
   "projectPage": {
-    "visitProject": "Visitar Projeto",
+    "liveDemo": "Demonstração",
     "viewOnGitHub": "Ver no GitHub",
     "readme": "README",
     "readmeplaceholder": "Carregando conteúdo do README...",

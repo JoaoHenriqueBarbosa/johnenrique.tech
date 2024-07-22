@@ -6,6 +6,10 @@
     },
     "heading": "Welcome to John Enrique's Personal Website"
   },
+  "common": {
+    "home": "Home",
+    "projects": "Projects"
+  },
   "header": {
     "initials": "JE",
     "name": "John Enrique",
@@ -25,7 +29,9 @@
   },
   "projects": {
     "heading": "Featured Projects",
-    "description": "Check out some of my recent projects"
+    "description": "Check out some of my recent projects",
+    "readMore": "Read More",
+    "liveDemo": "Live Demo"
   },
   "notFound": {
     "meta": {
@@ -34,7 +40,7 @@
     "heading": "Page not found"
   },
   "projectPage": {
-    "visitProject": "Visit Project",
+    "liveDemo": "Live Demo",
     "viewOnGitHub": "View on GitHub",
     "readme": "README",
     "readmeplaceholder": "Loading README content...",

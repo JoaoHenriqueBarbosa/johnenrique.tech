@@ -1,16 +1,16 @@
 "use client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import Link from "next/link";
+import { Link } from "@/navigation"
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function Header() {
   const [scroll, setScroll] = useState(false);
-  const t = useTranslations('header');
+  const t = useTranslations("header");
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -26,45 +26,45 @@ export function Header() {
       )}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Avatar className="w-12 h-12">
-            <AvatarImage src="/john.jpg" />
-            <AvatarFallback>{t("initials")}</AvatarFallback>
-          </Avatar>
-          <div>
-            <h1 className="text-2xl font-bold text-white drop-shadow-xl">
-              {t('name')}
-            </h1>
-            <p className="text-sm text-white drop-shadow-xl">
-              {t('role')}
-            </p>
-          </div>
+        <div>
+          <Link href="/" className="flex items-center gap-4">
+            <Avatar className="w-12 h-12">
+              <AvatarImage src="/john.jpg" />
+              <AvatarFallback>{t("initials")}</AvatarFallback>
+            </Avatar>
+            <div>
+              <h1 className="text-2xl font-bold text-white drop-shadow-xl">
+                {t("name")}
+              </h1>
+              <p className="text-sm text-white drop-shadow-xl">{t("role")}</p>
+            </div>
+          </Link>
         </div>
         <nav className="hidden space-x-6 md:flex items-center">
           <Link
-            href="#"
+            href="/"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
           >
-            {t('nav.work')}
+            {t("nav.work")}
           </Link>
           <Link
-            href="#"
+            href="/"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
           >
-            {t('nav.about')}
+            {t("nav.about")}
           </Link>
           <Link
-            href="#"
+            href="/"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
           >
-            {t('nav.contact')}
+            {t("nav.contact")}
           </Link>
           <LanguageSwitcher />
           <Button size="lg" className="hidden md:inline-flex text-md ml-4">
-            {t('cta')}
+            {t("cta")}
           </Button>
         </nav>
         <Sheet>
@@ -77,28 +77,30 @@ export function Header() {
           <SheetContent side="right">
             <div className="grid gap-4 p-4">
               <Link
-                href="#"
+                href="/"
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
               >
-                {t('nav.work')}
+                {t("nav.work")}
               </Link>
               <Link
-                href="#"
+                href="/"
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
               >
-                {t('nav.about')}
+                {t("nav.about")}
               </Link>
               <Link
-                href="#"
+                href="/"
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
               >
-                {t('nav.contact')}
+                {t("nav.contact")}
               </Link>
               <LanguageSwitcher />
-              <Button size="sm" className="mt-4">{t('cta')}</Button>
+              <Button size="sm" className="mt-4">
+                {t("cta")}
+              </Button>
             </div>
           </SheetContent>
         </Sheet>

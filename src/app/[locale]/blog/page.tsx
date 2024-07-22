@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import Link from 'next/link';
+import {Link} from '@/navigation';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 async function getBlogPosts(locale: string) {
@@ -23,7 +23,10 @@ export default async function BlogIndex({ params }: { params: { locale: string }
       <ul>
         {blogPosts.map((post) => (
           <li key={post.slug}>
-            <Link href={`/${params.locale}/blog/${post.slug}`}>
+            <Link href={{
+              pathname: '/blog/[slug]',
+              params: { slug: post.slug },
+            }}>
               {post.title}
             </Link>
           </li>

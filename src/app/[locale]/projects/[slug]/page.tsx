@@ -38,6 +38,7 @@ export default function ProjectPage({
 }: LocaleRouteParams & { params: { slug: string } }) {
   unstable_setRequestLocale(locale);
   const t = useTranslations("projectPage");
+  const commonT = useTranslations("common");
 
   const projects = locale === "en" ? enProjects : ptBRProjects;
   const project = projects.find((p) => p.slug === slug);
@@ -66,7 +67,7 @@ export default function ProjectPage({
               width={1120}
               height={630}
               quality={100}
-              className="h-[30vh] w-full object-cover object-center md:h-[40vh]"
+              className="h-[35vh] w-full object-cover object-center md:h-[40vh]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
             <div className="absolute inset-0 flex flex-col justify-center px-4">
@@ -75,17 +76,17 @@ export default function ProjectPage({
                 <Breadcrumb>
                   <BreadcrumbList>
                     <BreadcrumbItem>
-                      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                      <BreadcrumbLink href="/">{commonT("home")}</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <BreadcrumbLink href="/docs/components">
-                        Components
+                      <BreadcrumbLink href="/#projects">
+                        {commonT("projects")}
                       </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                      <BreadcrumbPage>{project.title}</BreadcrumbPage>
                     </BreadcrumbItem>
                   </BreadcrumbList>
                 </Breadcrumb>
@@ -159,7 +160,7 @@ export default function ProjectPage({
                   rel="noopener noreferrer"
                   className={buttonVariants({ variant: "default", size: "lg" })}
                 >
-                  {t("visitProject")}
+                  {t("liveDemo")}
                 </a>
                 <a
                   href={project.github}
