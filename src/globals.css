@@ -108,3 +108,95 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+:target::before {
+  content: "";
+  display: block;
+  height: 78px; /* fixed header height*/
+  margin: -78px 0 0; /* negative fixed header height */
+}
+
+.remark h1,
+.remark h2,
+.remark h3,
+.remark h4,
+.remark h5,
+.remark h6 {
+  @apply font-bold my-4;
+}
+
+.remark h1 {
+  @apply text-3xl;
+}
+
+.remark h2 {
+  @apply text-2xl;
+}
+
+.remark h3 {
+  @apply text-xl;
+}
+
+.remark h4 {
+  @apply text-lg;
+}
+
+.remark h5 {
+  @apply text-base;
+}
+
+.remark h6 {
+  @apply text-sm;
+}
+
+.remark p {
+  @apply text-base my-4;
+}
+
+.remark a {
+  @apply text-primary underline;
+}
+
+.remark ul {
+  @apply list-disc pl-4;
+}
+
+.remark ol {
+  @apply list-decimal pl-4;
+}
+
+.remark li {
+  @apply text-base;
+}
+
+.remark blockquote {
+  @apply border-l-4 border-primary pl-4 my-4;
+}
+
+.remark code {
+  @apply bg-muted-foreground text-muted rounded px-1;
+}
+
+.remark pre {
+  @apply bg-muted-foreground text-muted rounded p-4 my-4;
+}
+
+.remark table {
+  @apply w-full border-collapse;
+}
+
+.remark th {
+  @apply text-left text-base border-b border-border p-2;
+}
+
+.remark td {
+  @apply text-left text-base border-b border-border p-2;
+}
+
+.remark img {
+  @apply mx-auto my-4;
+}
+
+.remark hr {
+  @apply my-4 border-t border-border;
+}

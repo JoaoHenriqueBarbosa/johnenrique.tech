@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { buttonVariants } from "@/components/ui/button";
+import { Readme } from "@/components/readme";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -171,10 +172,7 @@ export default function ProjectPage({
               </div>
 
               <h2 className="text-2xl font-bold mb-4">{t("readme")}</h2>
-              <div className="prose max-w-none">
-                {/* Here you would fetch and render the README content */}
-                <p>{t("readmeplaceholder")}</p>
-              </div>
+              <Readme url={project.readme} />
             </div>
           </main>
           <Footer />
