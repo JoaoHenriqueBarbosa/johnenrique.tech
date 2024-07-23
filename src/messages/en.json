@@ -44,6 +44,8 @@
     "viewOnGitHub": "View on GitHub",
     "readme": "README",
     "readmeplaceholder": "Loading README content...",
-    "features": "Features"
+    "features": "Features",
+    "noPublicAccessTitle": "Public access not available",
+    "noPublicAccessDescription": "This project is not open-source and does not have public access. Please contact me if you are interested."
   }
 }

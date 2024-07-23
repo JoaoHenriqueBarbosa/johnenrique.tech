@@ -10,17 +10,21 @@ export const projects = [
         images: [
             "en.membot1.png",
             "en.membot2.png",
-        ],
-        features: [
-            "Financial tracking and analysis",
-            "AI-powered journaling",
-            "Multi-language support (English and Portuguese)",
-            "Customizable categories for entries",
-            "Detailed transaction history"
+        ]
+    },
+    {
+        slug: "afterschool",
+        title: "AfterSchool",
+        description: "AfterSchool is a comprehensive solution for after-school program management, featuring student and teacher registration, course management, attendance tracking, and administrative dashboards, all in real-time.",
+        readme: "/content/en/readmes/afterschool.md",
+        cover: "afterschool-1.webp",
+        images: [
+            "afterschool-2.webp",
+            "afterschool-3.webp",
+            "afterschool-4.webp",
+            "afterschool-5.webp"
         ]
     }
 ]
 
 export default projects;
-
-export type Project = (typeof projects)[number];

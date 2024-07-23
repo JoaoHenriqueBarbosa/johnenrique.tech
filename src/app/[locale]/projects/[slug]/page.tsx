@@ -21,12 +21,13 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { buttonVariants } from "@/components/ui/button";
 import { Readme } from "@/components/readme";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { AlertCircleIcon } from "lucide-react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -76,7 +77,9 @@ export default function ProjectPage({
                 <Breadcrumb>
                   <BreadcrumbList>
                     <BreadcrumbItem>
-                      <BreadcrumbLink href="/">{commonT("home")}</BreadcrumbLink>
+                      <BreadcrumbLink href="/">
+                        {commonT("home")}
+                      </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
@@ -101,7 +104,7 @@ export default function ProjectPage({
           </section>
           <main className="flex-1 container mx-auto md:mt-[-30px]">
             <div className="px-4 pb-8">
-              <Carousel className="mr-10">
+              <Carousel className="mr-10 max-h-[330px]">
                 <CarouselContent className="py-4 px-2">
                   <CarouselItem className="basis-1/2">
                     <Dialog>
@@ -153,24 +156,44 @@ export default function ProjectPage({
                 <CarouselNext />
               </Carousel>
 
-              <div className="flex space-x-4 mt-4 mb-8">
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({ variant: "default", size: "lg" })}
-                >
-                  {t("liveDemo")}
-                </a>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({ variant: "outline", size: "lg" })}
-                >
-                  {t("viewOnGitHub")}
-                </a>
-              </div>
+              {project.url || project.github ? (
+                <div className="flex space-x-4 mt-4 mb-8">
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={buttonVariants({
+                        variant: "default",
+                        size: "lg",
+                      })}
+                    >
+                      {t("liveDemo")}
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={buttonVariants({
+                        variant: "outline",
+                        size: "lg",
+                      })}
+                    >
+                      {t("viewOnGitHub")}
+                    </a>
+                  )}
+                </div>
+              ) : (
+                <Alert className="mb-4 space-x-2 border-yellow-800">
+                  <AlertCircleIcon className="h-6 w-6 stroke-yellow-800" />
+                  <AlertTitle className="text-yellow-800">{t("noPublicAccessTitle")}</AlertTitle>
+                  <AlertDescription className="text-yellow-800">
+                    {t("noPublicAccessDescription")}
+                  </AlertDescription>
+                </Alert>
+              )}
 
               <h2 className="text-2xl font-bold mb-4">{t("readme")}</h2>
               <Readme url={project.readme} />

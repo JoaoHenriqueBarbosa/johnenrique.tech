@@ -1,16 +1,32 @@
 import Image from "next/image";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+} from "@/components/ui/card";
 import { useTranslations, useLocale } from "next-intl";
 import enProjects from "@/content/en/projects";
 import ptBRProjects from "@/content/pt-BR/projects";
 import { buttonVariants } from "../ui/button";
 import { Link } from "@/navigation";
 
+export type Project = {
+  slug: string;
+  title: string;
+  description: string;
+  url?: string;
+  github?: string;
+  readme: string;
+  cover: string;
+  images: string[];
+};
+
 export function Projects() {
   const t = useTranslations("projects");
   const locale = useLocale();
 
-  const projects = locale === "pt-BR" ? ptBRProjects : enProjects;
+  const projects =
+    locale === "pt-BR" ? ptBRProjects : (enProjects as Project[]);
 
   return (
     <section
@@ -41,7 +57,7 @@ function ProjectCard({
 }: {
   title: string;
   description: string;
-  url: string;
+  url?: string;
   slug: string;
   cover: string;
   images: string[];
@@ -49,34 +65,41 @@ function ProjectCard({
   const t = useTranslations("projects");
 
   return (
-    <Card className="z-20">
+    <Card className="flex flex-col z-20">
       <CardHeader>
         <Image
           src={`/${cover}`}
           alt={title}
           width={640}
           height={360}
-          className="rounded-lg object-cover"
+          className="rounded-lg object-cover h-[150px]"
         />
       </CardHeader>
-      <CardContent className="!pt-0 mt-0 p-6 space-y-4">
-        <h3 className="text-xl font-bold">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
+      <CardContent className="!pt-0 mt-0 p-6 space-y-4 h-full flex flex-col justify-between">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold">{title}</h3>
+          <p className="text-muted-foreground">{description}</p>
+        </div>
         <div className="flex gap-2">
-          <a
-            href={url}
-            className={buttonVariants({ variant: "default", size: "md" })}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("liveDemo")}
-          </a>
+          {url && (
+            <a
+              href={url}
+              className={buttonVariants({ variant: "default", size: "md" })}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("liveDemo")}
+            </a>
+          )}
           <Link
             href={{
               pathname: "/projects/[slug]",
               params: { slug },
             }}
-            className={buttonVariants({ variant: "outline", size: "md" })}
+            className={buttonVariants({
+              variant: url ? "outline" : "default",
+              size: "md",
+            })}
           >
             {t("readMore")}
           </Link>
