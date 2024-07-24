@@ -24,6 +24,37 @@ export const projects = [
             "afterschool-4.webp",
             "afterschool-5.webp"
         ]
+    },
+    {
+        slug: 'finopenpos',
+        title: 'FinOpenPOS',
+        description: 'Este é um Sistema de Ponto de Venda (PDV ou POS em inglês) e Gerenciamento de Inventário construído com Next.js, React e Supabase. Ele oferece uma solução completa para gerenciar produtos, clientes, pedidos e transações em um ambiente de varejo ou pequeno negócio.',
+        url: 'https://fin-open-pos.vercel.app/',
+        github: 'https://github.com/JoaoHenriqueBarbosa/FinOpenPOS',
+        readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/FinOpenPOS/main/README.ptBR.md',
+        cover: 'finopenpos-2.webp',
+        images: [
+            'finopenpos-1.webp',
+            'finopenpos-3.webp',
+            'finopenpos-4.webp',
+            'finopenpos-5.webp',
+            'finopenpos-6.webp',
+            'finopenpos-7.webp',
+        ]
+    },
+    {
+        slug: 'bingo-displayer',
+        title: 'Exibidor de Bingo',
+        description: 'Este projeto é um exibidor de jogo de bingo em tempo real construído com Next.js e Supabase. Ele permite uma experiência de bingo sem interrupções, onde o jogo pode ser gerenciado em um computador e exibido em outro.',
+        url: 'https://bingo-displayer.vercel.app',
+        github: 'https://github.com/JoaoHenriqueBarbosa/bingo-displayer',
+        readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/bingo-displayer/main/README.ptBR.md',
+        cover: 'bingo-2.webp',
+        images: [
+            'bingo-1.webp',
+            'bingo-3.webp',
+            'bingo-4.webp',
+        ]
     }
 ]
 

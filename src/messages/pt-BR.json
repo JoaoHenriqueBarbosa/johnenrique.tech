@@ -15,6 +15,7 @@
     "name": "João Henrique",
     "role": "Desenvolvedor Full-Stack",
     "nav": {
+      "blog": "Blog",
       "work": "Trabalhos",
       "about": "Sobre",
       "contact": "Contato"
@@ -31,7 +32,9 @@
     "heading": "Projetos Recentes",
     "description": "Veja alguns dos meus trabalhos mais recentes",
     "readMore": "Ver Mais",
-    "liveDemo": "Demonstração"
+    "liveDemo": "Demonstração",
+    "more": "Mais Projetos",
+    "moreDescription": "Além destes projetos recentes selecionados, eu já fiz incontáveis outros, alguns dos quais o próprio código-fonte se perdeu no tempo. Eu falo mais sobre isso neste post do meu blog."
   },
   "notFound": {
     "meta": {

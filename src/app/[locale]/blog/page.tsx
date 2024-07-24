@@ -18,7 +18,7 @@ export default async function BlogIndex({ params }: { params: { locale: string }
   unstable_setRequestLocale(params.locale);
   const blogPosts = await getBlogPosts(params.locale);
   return (
-    <div>
+    <body>
       <h1>Blog Posts</h1>
       <ul>
         {blogPosts.map((post) => (
@@ -32,6 +32,6 @@ export default async function BlogIndex({ params }: { params: { locale: string }
           </li>
         ))}
       </ul>
-    </div>
+    </body>
   );
 }

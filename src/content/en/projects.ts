@@ -24,6 +24,37 @@ export const projects = [
             "afterschool-4.webp",
             "afterschool-5.webp"
         ]
+    },
+    {
+        slug: 'finopenpos',
+        title: 'FinOpenPOS',
+        description: 'This is a Point of Sale (POS) and Inventory Management System built with Next.js, React, and Supabase. It offers a comprehensive solution for managing products, customers, orders, and transactions in a retail or small business environment.',
+        url: 'https://fin-open-pos.vercel.app/',
+        github: 'https://github.com/JoaoHenriqueBarbosa/FinOpenPOS',
+        readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/FinOpenPOS/main/README.md',
+        cover: 'finopenpos-2.webp',
+        images: [
+            'finopenpos-1.webp',
+            'finopenpos-3.webp',
+            'finopenpos-4.webp',
+            'finopenpos-5.webp',
+            'finopenpos-6.webp',
+            'finopenpos-7.webp',
+        ]
+    },
+    {
+        slug: 'bingo-displayer',
+        title: 'Bingo Displayer',
+        description: 'This project is a real-time bingo game displayer built with Next.js and Supabase. It allows for a seamless bingo experience where the game can be managed on one computer and displayed on another.',
+        url: 'https://bingo-displayer.vercel.app',
+        github: 'https://github.com/JoaoHenriqueBarbosa/bingo-displayer',
+        readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/bingo-displayer/main/README.md',
+        cover: 'bingo-2.webp',
+        images: [
+            'bingo-1.webp',
+            'bingo-3.webp',
+            'bingo-4.webp',
+        ]
     }
 ]
 

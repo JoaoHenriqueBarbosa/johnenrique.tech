@@ -42,6 +42,12 @@ export function Projects() {
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
+          <ProjectCard
+            title={t("more")}
+            description={t("moreDescription")}
+            otherLink="/blog/projects"
+            cover="dev.webp"
+          />
         </div>
       </div>
     </section>
@@ -54,13 +60,14 @@ function ProjectCard({
   url,
   slug,
   cover,
+  otherLink,
 }: {
   title: string;
   description: string;
   url?: string;
-  slug: string;
+  slug?: string;
+  otherLink?: string;
   cover: string;
-  images: string[];
 }) {
   const t = useTranslations("projects");
 
@@ -78,7 +85,7 @@ function ProjectCard({
       <CardContent className="!pt-0 mt-0 p-6 space-y-4 h-full flex flex-col justify-between">
         <div className="space-y-4">
           <h3 className="text-xl font-bold">{title}</h3>
-          <p className="text-muted-foreground">{description}</p>
+          <p className="text-muted-foreground line-clamp-6">{description}</p>
         </div>
         <div className="flex gap-2">
           {url && (
@@ -91,6 +98,19 @@ function ProjectCard({
               {t("liveDemo")}
             </a>
           )}
+          {otherLink && (
+          <Link
+          // @ts-ignore
+            href={otherLink}
+            className={buttonVariants({
+              variant: "default",
+              size: "md",
+            })}
+          >
+            {t("readMore")}
+          </Link>
+          )}
+          {slug && (
           <Link
             href={{
               pathname: "/projects/[slug]",
@@ -103,6 +123,7 @@ function ProjectCard({
           >
             {t("readMore")}
           </Link>
+          )}
         </div>
       </CardContent>
     </Card>

@@ -15,6 +15,7 @@
     "name": "John Enrique",
     "role": "Full-Stack Developer",
     "nav": {
+      "blog": "Blog",
       "work": "Work",
       "about": "About",
       "contact": "Contact"
@@ -31,7 +32,9 @@
     "heading": "Featured Projects",
     "description": "Check out some of my recent projects",
     "readMore": "Read More",
-    "liveDemo": "Live Demo"
+    "liveDemo": "Live Demo",
+    "more": "More Projects",
+    "moreDescription": "Besides these recent selected projects, I have done countless others, some of which the source code has been lost over time. I talk more about this in this post on my blog."
   },
   "notFound": {
     "meta": {
