@@ -42,6 +42,13 @@ export function Header() {
         </div>
         <nav className="hidden space-x-6 md:flex items-center">
           <Link
+            href="/blog"
+            className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
+            prefetch={false}
+          >
+            {t("nav.blog")}
+          </Link>
+          <Link
             href="/"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
@@ -76,6 +83,13 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right">
             <div className="grid gap-4 p-4">
+              <Link
+                href="/blog"
+                className="text-lg font-medium text-foreground hover:underline"
+                prefetch={false}
+              >
+                {t("nav.blog")}
+              </Link>
               <Link
                 href="/"
                 className="text-lg font-medium text-foreground hover:underline"
