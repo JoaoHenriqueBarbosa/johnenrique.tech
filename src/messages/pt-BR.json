@@ -67,6 +67,9 @@
     "name": "Nome",
     "email": "E-mail",
     "message": "Mensagem",
-    "submit": "Enviar Mensagem"
+    "submit": "Enviar Mensagem",
+    "sending": "Enviando...",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Ocorreu um erro. Por favor, tente novamente."
   }
 }
