@@ -13,7 +13,7 @@ export function HomePage() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <Projects />
+        <Projects className="mt-[-100px]" showMore />
         <Skills />
         <Contact />
       </main>

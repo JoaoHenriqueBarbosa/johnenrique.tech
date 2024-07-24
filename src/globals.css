@@ -116,87 +116,87 @@
   margin: -78px 0 0; /* negative fixed header height */
 }
 
-.remark h1,
-.remark h2,
-.remark h3,
-.remark h4,
-.remark h5,
-.remark h6 {
+.remark h1:not(.noremark),
+.remark h2:not(.noremark),
+.remark h3:not(.noremark),
+.remark h4:not(.noremark),
+.remark h5:not(.noremark),
+.remark h6:not(.noremark) {
   @apply font-bold my-4;
 }
 
-.remark h1 {
+.remark h1:not(.noremark) {
   @apply text-3xl;
 }
 
-.remark h2 {
+.remark h2:not(.noremark) {
   @apply text-2xl;
 }
 
-.remark h3 {
+.remark h3:not(.noremark) {
   @apply text-xl;
 }
 
-.remark h4 {
+.remark h4:not(.noremark) {
   @apply text-lg;
 }
 
-.remark h5 {
+.remark h5:not(.noremark) {
   @apply text-base;
 }
 
-.remark h6 {
+.remark h6:not(.noremark) {
   @apply text-sm;
 }
 
-.remark p {
+.remark p:not(.noremark) {
   @apply text-base my-4;
 }
 
-.remark a {
+.remark a:not(.noremark) {
   @apply text-primary underline;
 }
 
-.remark ul {
+.remark ul:not(.noremark) {
   @apply list-disc pl-4;
 }
 
-.remark ol {
+.remark ol:not(.noremark) {
   @apply list-decimal pl-4;
 }
 
-.remark li {
+.remark li:not(.noremark) {
   @apply text-base;
 }
 
-.remark blockquote {
+.remark blockquote:not(.noremark) {
   @apply border-l-4 border-primary pl-4 my-4;
 }
 
-.remark code {
+.remark code:not(.noremark) {
   @apply bg-muted-foreground text-muted rounded px-1;
 }
 
-.remark pre {
+.remark pre:not(.noremark) {
   @apply bg-muted-foreground text-muted rounded p-4 my-4;
 }
 
-.remark table {
+.remark table:not(.noremark) {
   @apply w-full border-collapse;
 }
 
-.remark th {
+.remark th:not(.noremark) {
   @apply text-left text-base border-b border-border p-2;
 }
 
-.remark td {
+.remark td:not(.noremark) {
   @apply text-left text-base border-b border-border p-2;
 }
 
-.remark img {
+.remark img:not(.noremark) {
   @apply mx-auto my-4;
 }
 
-.remark hr {
+.remark hr:not(.noremark) {
   @apply my-4 border-t border-border;
 }

@@ -8,7 +8,9 @@
   },
   "common": {
     "home": "Home",
-    "projects": "Projects"
+    "projects": "Projects",
+    "blog": "Blog",
+    "readMore": "Read More"
   },
   "header": {
     "initials": "JE",
@@ -36,6 +38,9 @@
     "more": "More Projects",
     "moreDescription": "Besides these recent selected projects, I have done countless others, some of which the source code has been lost over time. I talk more about this in this post on my blog."
   },
+  "skills": {
+    "heading": "My Skills"
+  },
   "notFound": {
     "meta": {
       "title": "Page not found"
@@ -50,5 +55,18 @@
     "features": "Features",
     "noPublicAccessTitle": "Public access not available",
     "noPublicAccessDescription": "This project is not open-source and does not have public access. Please contact me if you are interested."
+  },
+  "blogPage": {
+    "pageTitle": "Blog - John Enrique",
+    "blogTitle": "Blog",
+    "blogDescription": "Explore my thoughts, experiences, and insights on various topics related to software development, technology, and more."
+  },
+  "contact": {
+    "heading": "Get in Touch",
+    "description": "Feel free to reach out to me for any inquiries or opportunities.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send Message"
   }
 }

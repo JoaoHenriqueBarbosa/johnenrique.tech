@@ -102,9 +102,11 @@ export default function ProjectPage({
               </div>
             </div>
           </section>
-          <main className="flex-1 container mx-auto md:mt-[-30px]">
+          <main className="flex-1 container mx-auto ">
             <div className="px-4 pb-8">
-              <Carousel className="mr-10 max-h-[330px]">
+              <Carousel className="mr-10 max-h-[330px]" opts={{
+                dragFree: true
+              }}>
                 <CarouselContent className="py-4 px-2">
                   <CarouselItem className="basis-1/2">
                     <Dialog>

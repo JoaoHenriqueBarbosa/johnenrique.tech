@@ -9,6 +9,7 @@ import enProjects from "@/content/en/projects";
 import ptBRProjects from "@/content/pt-BR/projects";
 import { buttonVariants } from "../ui/button";
 import { Link } from "@/navigation";
+import { cn } from "@/lib/utils";
 
 export type Project = {
   slug: string;
@@ -21,7 +22,13 @@ export type Project = {
   images: string[];
 };
 
-export function Projects() {
+export function Projects({
+  className,
+  showMore
+}: {
+  className?: string;
+  showMore?: boolean;
+}) {
   const t = useTranslations("projects");
   const locale = useLocale();
 
@@ -31,23 +38,25 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="bg-muted pb-12 md:pb-20 px-6 mt-[-100px] mb-[-100px]"
+      className={cn(className, "bg-muted py-5 px-6")}
     >
       <div className="container max-w-5xl mx-auto space-y-8">
         <div className="text-center space-y-4 relative z-20">
-          <h2 className="text-3xl md:text-4xl font-bold">{t("heading")}</h2>
-          <p className="text-muted-foreground">{t("description")}</p>
+          <h2 className="text-3xl md:text-4xl font-bold noremark">{t("heading")}</h2>
+          <p className="text-muted-foreground noremark">{t("description")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
+          {showMore && (
           <ProjectCard
             title={t("more")}
             description={t("moreDescription")}
             otherLink="/blog/projects"
             cover="dev.webp"
           />
+          )}
         </div>
       </div>
     </section>
@@ -79,19 +88,19 @@ function ProjectCard({
           alt={title}
           width={640}
           height={360}
-          className="rounded-lg object-cover h-[150px]"
+          className="rounded-lg object-cover h-[150px] noremark"
         />
       </CardHeader>
       <CardContent className="!pt-0 mt-0 p-6 space-y-4 h-full flex flex-col justify-between">
         <div className="space-y-4">
-          <h3 className="text-xl font-bold">{title}</h3>
-          <p className="text-muted-foreground line-clamp-6">{description}</p>
+          <h3 className="text-xl font-bold noremark">{title}</h3>
+          <p className="text-muted-foreground line-clamp-6 noremark">{description}</p>
         </div>
         <div className="flex gap-2">
           {url && (
             <a
               href={url}
-              className={buttonVariants({ variant: "default", size: "md" })}
+              className={cn("noremark",buttonVariants({ variant: "default", size: "md" }))}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -102,10 +111,10 @@ function ProjectCard({
           <Link
           // @ts-ignore
             href={otherLink}
-            className={buttonVariants({
+            className={cn("noremark", buttonVariants({
               variant: "default",
               size: "md",
-            })}
+            }))}
           >
             {t("readMore")}
           </Link>
@@ -116,10 +125,10 @@ function ProjectCard({
               pathname: "/projects/[slug]",
               params: { slug },
             }}
-            className={buttonVariants({
+            className={cn("noremark", buttonVariants({
               variant: url ? "outline" : "default",
               size: "md",
-            })}
+            }))}
           >
             {t("readMore")}
           </Link>

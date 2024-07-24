@@ -8,7 +8,9 @@
   },
   "common": {
     "home": "Início",
-    "projects": "Projetos"
+    "projects": "Projetos",
+    "blog": "Blog",
+    "readMore": "Leia Mais"
   },
   "header": {
     "initials": "JH",
@@ -36,6 +38,9 @@
     "more": "Mais Projetos",
     "moreDescription": "Além destes projetos recentes selecionados, eu já fiz incontáveis outros, alguns dos quais o próprio código-fonte se perdeu no tempo. Eu falo mais sobre isso neste post do meu blog."
   },
+  "skills": {
+    "heading": "Minhas Habilidades"
+  },
   "notFound": {
     "meta": {
       "title": "Página não encontrada"
@@ -50,5 +55,18 @@
     "features": "Funcionalidades",
     "noPublicAccessTitle": "Acesso publico não disponível",
     "noPublicAccessDescription": "Este projeto não é open-source e não tem acesso publico. Por favor, entre em contato se você se interessar."
+  },
+  "blogPage": {
+    "pageTitle": "Blog - João Henrique",
+    "blogTitle": "Blog",
+    "blogDescription": "Explore meus pensamentos, experiencias e insights em diversos temas relacionados ao desenvolvimento de software, tecnologia e mais."
+  },
+  "contact": {
+    "heading": "Entre em Contato",
+    "description": "Sinta-se à vontade para entrar em contato comigo para qualquer consulta ou oportunidade.",
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Mensagem",
+    "submit": "Enviar Mensagem"
   }
 }
