@@ -14,13 +14,13 @@ export async function POST(request: Request) {
   });
 
   const mailOptions = {
-    from: process.env.MAIL_USER,
-    to: 'joaohenriquebarbosa21@gmail.com',
-    subject: 'New Contact Form Submission',
+    from: `Site João Henrique Barbosa <${process.env.MAIL_USER}>`,
+    to: process.env.MAIL_RECIPIENT,
+    subject: 'Nova mensagem de contato no site João Henrique',
     text: `
-      Name: ${name}
-      Email: ${email}
-      Message: ${message}
+      Nome: ${name}
+      E-mail: ${email}
+      Mensagem: ${message}
     `,
   };
 

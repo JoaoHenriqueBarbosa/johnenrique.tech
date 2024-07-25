@@ -71,5 +71,19 @@
     "sending": "Sending...",                                                                                                                      
     "success": "Message sent successfully!",                                                                                                      
     "error": "An error occurred. Please try again."
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "copyright": "© {year} John Enrique. All rights reserved.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "newsletter": "Keep in touch",
+    "newsletterDescription": "Stay updated with my latest news and projects.",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe"
   }
 }

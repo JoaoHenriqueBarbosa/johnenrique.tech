@@ -71,5 +71,19 @@
     "sending": "Enviando...",
     "success": "Mensagem enviada com sucesso!",
     "error": "Ocorreu um erro. Por favor, tente novamente."
+  },
+  "footer": {
+    "aboutUs": "Sobre Nós",
+    "copyright": "© {year} João Henrique. Todos os direitos reservados.",
+    "quickLinks": "Links Rápidos",
+    "home": "Início",
+    "projects": "Projetos",
+    "blog": "Blog",
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfService": "Termos de Serviço",
+    "newsletter": "Mantenha contato",
+    "newsletterDescription": "Fique atualizado com minhas novidades e projetos.",
+    "emailPlaceholder": "Digite seu e-mail",
+    "subscribe": "Inscrever-se"
   }
 }
