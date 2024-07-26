@@ -1,20 +1,22 @@
 "use client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Link } from "@/navigation"
+import { Link } from "@/navigation";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { usePathname } from "@/navigation";
 
 export function Header() {
   const [scroll, setScroll] = useState(false);
   const t = useTranslations("header");
+  const pathname = usePathname();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 400);
+      setScroll(window.scrollY > 200);
     });
   }, []);
 
@@ -40,7 +42,7 @@ export function Header() {
             </div>
           </Link>
         </div>
-        <nav className="hidden space-x-6 md:flex items-center">
+        <nav className="hidden lg:space-x-6 md:space-x-4 md:flex items-center">
           <Link
             href="/blog"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
@@ -49,9 +51,9 @@ export function Header() {
             {t("nav.blog")}
           </Link>
           <Link
-            href="/"
-            className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
-            prefetch={false}
+            // @ts-ignore
+            href={pathname !== "/" ? "/#projects" : "#projects"}
+            className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl hidden lg:block"
           >
             {t("nav.work")}
           </Link>
@@ -63,20 +65,23 @@ export function Header() {
             {t("nav.about")}
           </Link>
           <Link
-            href="/"
+            // @ts-ignore
+            href={pathname !== "/" ? "/#contact" : "#contact"}
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
-            prefetch={false}
           >
             {t("nav.contact")}
           </Link>
-          <LanguageSwitcher />
-          <Button size="lg" className="hidden md:inline-flex text-md ml-4">
+          <LanguageSwitcher variant="dropdown" />
+          <Button
+            size="lg"
+            className="hidden md:inline-flex text-md ml-4 md:px-4 lg:px-8"
+          >
             {t("cta")}
           </Button>
         </nav>
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
+            <Button variant="outline" size="icon" className="md:hidden">
               <MenuIcon className="h-6 w-6" />
               <span className="sr-only">Toggle navigation</span>
             </Button>
@@ -111,10 +116,9 @@ export function Header() {
               >
                 {t("nav.contact")}
               </Link>
-              <LanguageSwitcher />
-              <Button size="sm" className="mt-4">
-                {t("cta")}
-              </Button>
+              <Button size="lg">{t("cta")}</Button>
+              <hr />
+              <LanguageSwitcher variant="radio" />
             </div>
           </SheetContent>
         </Sheet>

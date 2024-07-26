@@ -70,14 +70,14 @@ export default async function BlogPost({
                 width={1120}
                 height={630}
                 quality={100}
-                className="h-[35vh] w-full object-cover object-center md:h-[40vh]"
+                className="w-full object-cover object-center h-[280px]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
               <div className="absolute inset-0 flex flex-col justify-center px-4">
-                <div className="container mx-auto">
+                <div className="container mx-auto text-center">
                   <div className="h-[98px]"></div>
                   <Breadcrumb>
-                    <BreadcrumbList>
+                    <BreadcrumbList className="justify-center">
                       <BreadcrumbItem>
                         <BreadcrumbLink href="/">
                           {commonT("home")}
@@ -104,7 +104,7 @@ export default async function BlogPost({
                 </div>
               </div>
             </section>
-            <main className="flex-1 container mx-auto mt-[-30px] z-20">
+            <main className="flex-1 container mx-auto z-20 max-w-6xl">
               <div className="px-4 pb-8">
                 <article className="prose dark:prose-invert max-w-none remark">
                   <MDXRemote source={content} components={{ Projects, Link }} />

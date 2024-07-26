@@ -24,10 +24,10 @@ export type Project = {
 
 export function Projects({
   className,
-  showMore
+  homePage
 }: {
   className?: string;
-  showMore?: boolean;
+  homePage?: boolean;
 }) {
   const t = useTranslations("projects");
   const locale = useLocale();
@@ -38,8 +38,11 @@ export function Projects({
   return (
     <section
       id="projects"
-      className={cn(className, "bg-muted py-5 px-6")}
+      className={cn(className, "bg-muted py-5 px-6", homePage && "mt-[-178px]")}
     >
+      {homePage && (
+        <div className="h-[78px]"/>
+      )}
       <div className="container max-w-5xl mx-auto space-y-8">
         <div className="text-center space-y-4 relative z-20">
           <h2 className="text-3xl md:text-4xl font-bold noremark">{t("heading")}</h2>
@@ -49,7 +52,7 @@ export function Projects({
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
-          {showMore && (
+          {homePage && (
           <ProjectCard
             title={t("more")}
             description={t("moreDescription")}

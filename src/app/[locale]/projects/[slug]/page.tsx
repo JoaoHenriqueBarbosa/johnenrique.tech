@@ -68,7 +68,7 @@ export default function ProjectPage({
               width={1120}
               height={630}
               quality={100}
-              className="h-[35vh] w-full object-cover object-center md:h-[40vh]"
+              className="w-full object-cover object-center h-[300px] md:h-[360px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
             <div className="absolute inset-0 flex flex-col justify-center px-4">
@@ -104,7 +104,7 @@ export default function ProjectPage({
           </section>
           <main className="flex-1 container mx-auto ">
             <div className="px-4 pb-8">
-              <Carousel className="mr-10 max-h-[330px]" opts={{
+              <Carousel className="mr-10 max-h-[330px] mb-0 xl:mb-10" opts={{
                 dragFree: true
               }}>
                 <CarouselContent className="py-4 px-2">
