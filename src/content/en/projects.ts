@@ -7,6 +7,10 @@ export const projects = [
         github: "https://github.com/JoaoHenriqueBarbosa/MemBot",
         readme: "https://raw.githubusercontent.com/JoaoHenriqueBarbosa/MemBot/main/README.md",
         cover: "membot-cover.webp",
+        keywords: ["AI", "personal assistant", "finances", "journaling", "tracking"],
+        keywords: ["after-school", "management", "student registration", "teacher registration", "real-time"],
+        keywords: ["POS", "inventory management", "Next.js", "React", "Supabase"],
+        keywords: ["bingo", "real-time", "Next.js", "Supabase", "game"],
         images: [
             "en.membot1.png",
             "en.membot2.png",
