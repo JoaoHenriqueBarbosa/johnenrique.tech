@@ -202,42 +202,46 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params: { locale, slug },
 }: LocaleRouteParams & { params: { slug: string } }) {
-  const contentDir = path.join(
-    process.cwd(),
-    "src",
-    "content",
-    locale,
-    "projects"
-  );
-  const filePath = path.join(contentDir, `${slug}.mdx`);
+  const projects = locale === "en" ? enProjects : ptBRProjects;
+  const project = projects.find((p) => p.slug === slug);
 
-  if (!filePath.endsWith(".mdx")) {
+  if (!project) {
     return {};
   }
 
-  try {
-    const file = await fs.readFile(filePath, "utf8");
-    const { data } = matter(file);
-    const commonT = await getTranslations("common");
+  const commonT = await getTranslations("common");
 
-    return {
-      title: `${data.title} | ${commonT("meta.title")}`,
-      description: data.description,
-      keywords: data.keywords?.join(", "),
-      openGraph: {
-        title: `${data.title} | ${commonT("meta.title")}`,
-        description: data.description,
-        type: "article",
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
-        images: [`${process.env.NEXT_PUBLIC_SITE_URL}/${data.cover}`],
-      },
-      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
-    };
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return {};
-    }
-    console.error(`Error reading file: ${filePath}`, error);
-    throw error;
-  }
+  return {
+    title: `${project.title} | ${commonT("meta.title")}`,
+    description: project.description,
+    keywords: project.keywords?.join(", "),
+    openGraph: {
+      title: `${project.title} | ${commonT("meta.title")}`,
+      description: project.description,
+      type: "article",
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
+      images: project.images.map((image) => (
+        {
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/${image}`,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        }
+      )),
+    },
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | ${commonT("meta.title")}`,
+      description: project.description,
+      images: project.images.map((image) => (
+        {
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/${image}`,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        }
+      )),
+    },
+  };
 }
