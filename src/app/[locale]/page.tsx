@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}`,
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.png`,
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`,
           width: 1200,
           height: 630,
           alt: t('meta.title'),
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       description: t('meta.description'),
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.png`,
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`,
           width: 1200,
           height: 630,
           alt: t('meta.title'),

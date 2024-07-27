@@ -65,7 +65,7 @@ export async function generateMetadata({
         publishedTime: data.date ? new Date(data.date).toISOString() : undefined,
         images: [
           {
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.png`,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`,
             width: 1200,
             height: 630,
             alt: data.title,
@@ -79,7 +79,7 @@ export async function generateMetadata({
         description: data.description || t("meta.keywords"),
         images: [
           {
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.png`,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`,
             width: 1200,
             height: 630,
             alt: data.title,
