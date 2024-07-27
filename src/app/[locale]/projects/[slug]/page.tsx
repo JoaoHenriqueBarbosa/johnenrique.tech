@@ -49,17 +49,6 @@ export default async function ProjectPage({
 
   return (
     <>
-      <head>
-        <title>{project.title} | {commonT('meta.title')}</title>
-        <meta name="description" content={project.description} />
-        <meta name="keywords" content={project.keywords?.join(", ")} />
-        <meta property="og:title" content={`${project.title} | ${commonT('meta.title')}`} />
-        <meta property="og:description" content={project.description} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://yourdomain.com/${locale}/projects/${slug}`} />
-        <meta property="og:image" content={`https://yourdomain.com/${project.cover}`} />
-        <link rel="canonical" href={`https://yourdomain.com/${locale}/projects/${slug}`} />
-      </head>
       <body
         className={cn(
           "min-h-screen font-sans antialiased bg-muted",
@@ -219,4 +208,27 @@ export function generateStaticParams() {
   return enProjects.map((project) => ({
     slug: project.slug,
   }));
+}
+export async function generateMetadata({ params: { locale, slug } }: LocaleRouteParams & { params: { slug: string } }) {
+  const projects = locale === "en" ? enProjects : ptBRProjects;
+  const project = projects.find((p) => p.slug === slug);
+  const commonT = await getTranslations("common");
+
+  if (!project) {
+    return {};
+  }
+
+  return {
+    title: `${project.title} | ${commonT('meta.title')}`,
+    description: project.description,
+    keywords: project.keywords?.join(", "),
+    openGraph: {
+      title: `${project.title} | ${commonT('meta.title')}`,
+      description: project.description,
+      type: 'article',
+      url: `https://yourdomain.com/${locale}/projects/${slug}`,
+      images: [`https://yourdomain.com/${project.cover}`],
+    },
+    canonical: `https://yourdomain.com/${locale}/projects/${slug}`,
+  };
 }

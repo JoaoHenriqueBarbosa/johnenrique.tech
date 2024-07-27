@@ -52,18 +52,6 @@ export default async function BlogPost({
     const { content, data } = parsed;
     return (
       <>
-        <head>
-          <title>{data.title}</title>
-          <meta name="description" content={data.description} />
-          <meta name="keywords" content={data.keywords} />
-          <meta property="og:title" content={data.title} />
-          <meta property="og:description" content={data.description} />
-          <meta property="og:type" content="article" />
-          <meta property="og:url" content={`https://yourdomain.com/${params.locale}/blog/${params.slug}`} />
-          <meta property="article:published_time" content={data.date.toISOString()} />
-          <meta property="article:author" content={data.author} />
-          <link rel="canonical" href={`https://yourdomain.com/${params.locale}/blog/${params.slug}`} />
-        </head>
         <body
           className={cn(
             "min-h-screen font-sans antialiased bg-muted",
@@ -133,6 +121,40 @@ export default async function BlogPost({
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
       notFound();
+    }
+    console.error(`Error reading file: ${filePath}`, error);
+    throw error;
+  }
+}
+export async function generateMetadata({ params }: { params: { slug: string; locale: string } }) {
+  const contentDir = path.join(process.cwd(), 'src', 'content', params.locale, 'blog');
+  const filePath = path.join(contentDir, `${params.slug}.mdx`);
+
+  if (!filePath.endsWith('.mdx')) {
+    return {};
+  }
+
+  try {
+    const file = await fs.readFile(filePath, 'utf8');
+    const { data } = matter(file);
+
+    return {
+      title: data.title,
+      description: data.description,
+      keywords: data.keywords,
+      openGraph: {
+        title: data.title,
+        description: data.description,
+        type: 'article',
+        url: `https://yourdomain.com/${params.locale}/blog/${params.slug}`,
+        publishedTime: data.date.toISOString(),
+        authors: [data.author],
+      },
+      canonical: `https://yourdomain.com/${params.locale}/blog/${params.slug}`,
+    };
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      return {};
     }
     console.error(`Error reading file: ${filePath}`, error);
     throw error;
