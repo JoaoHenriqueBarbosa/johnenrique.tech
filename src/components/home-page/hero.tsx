@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { useWordTyper } from "@/hooks/useWordTyper";
 import { useTranslations } from 'next-intl';
+import { Link } from "@/navigation";
+import { buttonVariants } from "../ui/button";
 
 export function Hero() {
   const t = useTranslations('hero');
@@ -26,7 +27,11 @@ export function Hero() {
           {t('description')}
         </p>
         <div className="mt-8">
-          <Button size="lg">{t('cta')}</Button>
+          <Link
+            // @ts-ignore
+            href="/#projects"
+            className={buttonVariants({ size: "lg" })}
+          >{t('cta')}</Link>
         </div>
       </div>
     </section>

@@ -1,6 +1,4 @@
-import { cn } from "@/lib/utils";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
-import { Inter as FontSans } from "next/font/google";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { projects as enProjects } from "@/content/en/projects";
@@ -27,11 +25,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { Readme } from "@/components/readme";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AlertCircleIcon } from "lucide-react";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import { promises as fs } from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 export default async function ProjectPage({
   params: { locale, slug },
@@ -48,159 +44,153 @@ export default async function ProjectPage({
   }
 
   return (
-    <>
-      <body
-        className={cn(
-          "min-h-screen font-sans antialiased bg-muted",
-          fontSans.variable
-        )}
-      >
-        <div className="flex flex-col min-h-dvh relative">
-          <Header />
-          <section className="relative w-full">
-            <Image
-              src="/holo-2.webp"
-              alt="Hero Image"
-              width={1120}
-              height={630}
-              quality={100}
-              className="w-full object-cover object-center h-[360px]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
-            <div className="absolute inset-0 flex flex-col justify-center px-4">
-              <div className="container mx-auto">
-                <div className="h-[98px]"></div>
-                <Breadcrumb>
-                  <BreadcrumbList>
-                    <BreadcrumbItem>
-                      <BreadcrumbLink href="/">
-                        {commonT("home")}
-                      </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      <BreadcrumbLink href="/#projects">
-                        {commonT("projects")}
-                      </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      <BreadcrumbPage>{project.title}</BreadcrumbPage>
-                    </BreadcrumbItem>
-                  </BreadcrumbList>
-                </Breadcrumb>
-                <h1 className="text-3xl mt-4 font-bold tracking-tight text-black md:text-5xl drop-shadow-xl">
-                  {project.title}
-                </h1>
-                <p className="mt-4 max-w-xl text-black md:text-xl drop-shadow-xl">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          </section>
-          <main className="flex-1 container mx-auto ">
-            <div className="px-4 pb-8">
-              <Carousel className="mr-10 max-h-[330px] mb-0 xl:mb-10" opts={{
-                dragFree: true
-              }}>
-                <CarouselContent className="py-4 px-2">
-                  <CarouselItem className="basis-1/2">
-                    <Dialog>
-                      <DialogTrigger>
-                        <Image
-                          src={`/${project.cover}`}
-                          alt={project.title}
-                          width={600}
-                          height={400}
-                          className="rounded-lg shadow-lg"
-                        />
-                      </DialogTrigger>
-                      <DialogContent>
-                        <Image
-                          src={`/${project.cover}`}
-                          alt={project.title}
-                          width={600}
-                          height={400}
-                          className="rounded-lg shadow-lg"
-                        />
-                      </DialogContent>
-                    </Dialog>
-                  </CarouselItem>
-                  {project.images.map((image, index) => (
-                    <CarouselItem key={index} className="basis-1/2">
-                      <Dialog>
-                        <DialogTrigger>
-                          <Image
-                            src={`/${image}`}
-                            alt={`${project.title} screenshot ${index + 1}`}
-                            width={600}
-                            height={400}
-                            className="rounded-lg shadow-lg"
-                          />
-                        </DialogTrigger>
-                        <DialogContent>
-                          <Image
-                            src={`/${image}`}
-                            alt={`${project.title} screenshot ${index + 1}`}
-                            width={600}
-                            height={400}
-                            className="rounded-lg shadow-lg"
-                          />
-                        </DialogContent>
-                      </Dialog>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselNext />
-              </Carousel>
-
-              {project.url || project.github ? (
-                <div className="flex gap-4 mt-4 mb-8 flex-col md:flex-row">
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={buttonVariants({
-                        variant: "default",
-                        size: "lg",
-                      })}
-                    >
-                      {t("liveDemo")}
-                    </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={buttonVariants({
-                        variant: "outline",
-                        size: "lg",
-                      })}
-                    >
-                      {t("viewOnGitHub")}
-                    </a>
-                  )}
-                </div>
-              ) : (
-                <Alert className="mb-4 space-x-2 border-yellow-800">
-                  <AlertCircleIcon className="h-6 w-6 stroke-yellow-800" />
-                  <AlertTitle className="text-yellow-800">{t("noPublicAccessTitle")}</AlertTitle>
-                  <AlertDescription className="text-yellow-800">
-                    {t("noPublicAccessDescription")}
-                  </AlertDescription>
-                </Alert>
-              )}
-
-              <h2 className="text-2xl font-bold mb-4">{t("readme")}</h2>
-              <Readme url={project.readme} />
-            </div>
-          </main>
-          <Footer />
+    <div className="flex flex-col min-h-dvh relative">
+      <Header />
+      <section className="relative w-full">
+        <Image
+          src="/holo-2.webp"
+          alt="Hero Image"
+          width={1120}
+          height={630}
+          quality={100}
+          className="w-full object-cover object-center h-[360px]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
+        <div className="absolute inset-0 flex flex-col justify-center px-4">
+          <div className="container mx-auto">
+            <div className="h-[98px]"></div>
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/">{commonT("home")}</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/#projects">
+                    {commonT("projects")}
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{project.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+            <h1 className="text-3xl mt-4 font-bold tracking-tight text-black md:text-5xl drop-shadow-xl">
+              {project.title}
+            </h1>
+            <p className="mt-4 max-w-xl text-black md:text-xl drop-shadow-xl">
+              {project.description}
+            </p>
+          </div>
         </div>
-      </body>
-    </>
+      </section>
+      <main className="flex-1 container mx-auto ">
+        <div className="px-4 pb-8">
+          <Carousel
+            className="mr-10 max-h-[330px] mb-0 xl:mb-10"
+            opts={{
+              dragFree: true,
+            }}
+          >
+            <CarouselContent className="py-4 px-2">
+              <CarouselItem className="basis-1/2">
+                <Dialog>
+                  <DialogTrigger>
+                    <Image
+                      src={`/${project.cover}`}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className="rounded-lg shadow-lg"
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <Image
+                      src={`/${project.cover}`}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className="rounded-lg shadow-lg"
+                    />
+                  </DialogContent>
+                </Dialog>
+              </CarouselItem>
+              {project.images.map((image, index) => (
+                <CarouselItem key={index} className="basis-1/2">
+                  <Dialog>
+                    <DialogTrigger>
+                      <Image
+                        src={`/${image}`}
+                        alt={`${project.title} screenshot ${index + 1}`}
+                        width={600}
+                        height={400}
+                        className="rounded-lg shadow-lg"
+                      />
+                    </DialogTrigger>
+                    <DialogContent>
+                      <Image
+                        src={`/${image}`}
+                        alt={`${project.title} screenshot ${index + 1}`}
+                        width={600}
+                        height={400}
+                        className="rounded-lg shadow-lg"
+                      />
+                    </DialogContent>
+                  </Dialog>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselNext />
+          </Carousel>
+
+          {project.url || project.github ? (
+            <div className="flex gap-4 mt-4 mb-8 flex-col md:flex-row">
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonVariants({
+                    variant: "default",
+                    size: "lg",
+                  })}
+                >
+                  {t("liveDemo")}
+                </a>
+              )}
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonVariants({
+                    variant: "outline",
+                    size: "lg",
+                  })}
+                >
+                  {t("viewOnGitHub")}
+                </a>
+              )}
+            </div>
+          ) : (
+            <Alert className="mb-4 space-x-2 border-yellow-800">
+              <AlertCircleIcon className="h-6 w-6 stroke-yellow-800" />
+              <AlertTitle className="text-yellow-800">
+                {t("noPublicAccessTitle")}
+              </AlertTitle>
+              <AlertDescription className="text-yellow-800">
+                {t("noPublicAccessDescription")}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          <h2 className="text-2xl font-bold mb-4">{t("readme")}</h2>
+          <Readme url={project.readme} />
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
@@ -209,26 +199,45 @@ export function generateStaticParams() {
     slug: project.slug,
   }));
 }
-export async function generateMetadata({ params: { locale, slug } }: LocaleRouteParams & { params: { slug: string } }) {
-  const projects = locale === "en" ? enProjects : ptBRProjects;
-  const project = projects.find((p) => p.slug === slug);
-  const commonT = await getTranslations("common");
+export async function generateMetadata({
+  params: { locale, slug },
+}: LocaleRouteParams & { params: { slug: string } }) {
+  const contentDir = path.join(
+    process.cwd(),
+    "src",
+    "content",
+    locale,
+    "projects"
+  );
+  const filePath = path.join(contentDir, `${slug}.mdx`);
 
-  if (!project) {
+  if (!filePath.endsWith(".mdx")) {
     return {};
   }
 
-  return {
-    title: `${project.title} | ${commonT('meta.title')}`,
-    description: project.description,
-    keywords: project.keywords?.join(", "),
-    openGraph: {
-      title: `${project.title} | ${commonT('meta.title')}`,
-      description: project.description,
-      type: 'article',
-      url: `https://yourdomain.com/${locale}/projects/${slug}`,
-      images: [`https://yourdomain.com/${project.cover}`],
-    },
-    canonical: `https://yourdomain.com/${locale}/projects/${slug}`,
-  };
+  try {
+    const file = await fs.readFile(filePath, "utf8");
+    const { data } = matter(file);
+    const commonT = await getTranslations("common");
+
+    return {
+      title: `${data.title} | ${commonT("meta.title")}`,
+      description: data.description,
+      keywords: data.keywords?.join(", "),
+      openGraph: {
+        title: `${data.title} | ${commonT("meta.title")}`,
+        description: data.description,
+        type: "article",
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
+        images: [`${process.env.NEXT_PUBLIC_SITE_URL}/${data.cover}`],
+      },
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
+    };
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return {};
+    }
+    console.error(`Error reading file: ${filePath}`, error);
+    throw error;
+  }
 }

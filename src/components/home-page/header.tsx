@@ -13,6 +13,7 @@ export function Header() {
   const [scroll, setScroll] = useState(false);
   const t = useTranslations("header");
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -79,7 +80,7 @@ export function Header() {
             {t("cta")}
           </Button>
         </nav>
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="md:hidden">
               <MenuIcon className="h-6 w-6" />
@@ -92,13 +93,16 @@ export function Header() {
                 href="/blog"
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
+                onClick={() => setOpen(false)}
               >
                 {t("nav.blog")}
               </Link>
               <Link
-                href="/"
+                // @ts-ignore
+                href={pathname !== "/" ? "/#projects" : "#projects"}
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
+                onClick={() => setOpen(false)}
               >
                 {t("nav.work")}
               </Link>
@@ -106,13 +110,16 @@ export function Header() {
                 href="/"
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
+                onClick={() => setOpen(false)}
               >
                 {t("nav.about")}
               </Link>
               <Link
-                href="/"
+                // @ts-ignore
+                href={pathname !== "/" ? "/#contact" : "#contact"}
                 className="text-lg font-medium text-foreground hover:underline"
                 prefetch={false}
+                onClick={() => setOpen(false)}
               >
                 {t("nav.contact")}
               </Link>

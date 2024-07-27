@@ -1,12 +1,13 @@
 {
   "home": {
-    "meta": {
-      "title": "John Enrique - Personal Website",
-      "description": "Welcome to John Enrique's personal website. Explore my projects, blog, and more."
-    },
     "heading": "Welcome to John Enrique's Personal Website"
   },
   "common": {
+    "meta": {
+      "title": "John Enrique - Personal Website",
+      "description": "Welcome to John Enrique's personal website. Explore my projects, blog, and more.",
+      "keywords": "AI Tools,Complex Systems,Web Apps,Designs,Middlewares"
+    },
     "home": "Home",
     "projects": "Projects",
     "blog": "Blog",

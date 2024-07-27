@@ -39,7 +39,7 @@ export function Readme({ url }: { url: string }) {
                     return <></>
                 }
                 return <p {...props}>{children}</p>
-              },
+              }
             },
           }}
         >

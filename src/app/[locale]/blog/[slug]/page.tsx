@@ -146,11 +146,11 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
         title: data.title,
         description: data.description,
         type: 'article',
-        url: `https://yourdomain.com/${params.locale}/blog/${params.slug}`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}/blog/${params.slug}`,
         publishedTime: data.date.toISOString(),
         authors: [data.author],
       },
-      canonical: `https://yourdomain.com/${params.locale}/blog/${params.slug}`,
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}/blog/${params.slug}`,
     };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {

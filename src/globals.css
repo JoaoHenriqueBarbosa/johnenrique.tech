@@ -178,7 +178,7 @@
 }
 
 .remark pre:not(.noremark) {
-  @apply bg-muted-foreground text-muted rounded p-4 my-4;
+  @apply bg-muted-foreground text-muted rounded p-4 my-4 overflow-x-scroll;
 }
 
 .remark table:not(.noremark) {

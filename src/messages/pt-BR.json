@@ -1,12 +1,13 @@
 {
   "home": {
-    "meta": {
-      "title": "João Henrique - Site Pessoal",
-      "description": "Bem-vindo ao site pessoal de João Henrique. Explore meus projetos, blog e mais."
-    },
     "heading": "Bem-vindo ao Site Pessoal de João Henrique"
   },
   "common": {
+    "meta": {
+      "title": "João Henrique - Site Pessoal",
+      "description": "Bem-vindo ao site pessoal de João Henrique. Explore meus projetos, blog e mais.",
+      "keywords": "Ferramentas de IA,Sistemas Complexos,Aplicações Web,Designs,Integrações"
+    },
     "home": "Início",
     "projects": "Projetos",
     "blog": "Blog",
