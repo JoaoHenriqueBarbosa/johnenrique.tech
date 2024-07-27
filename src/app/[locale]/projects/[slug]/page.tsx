@@ -241,14 +241,20 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${project.title} | ${commonT("meta.title")}`,
       description: project.description,
-      images: project.images.map((image) => (
+      images: [
         {
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/${project.cover}`,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+        ...project.images.map((image) => ({
           url: `${process.env.NEXT_PUBLIC_SITE_URL}/${image}`,
           width: 1200,
           height: 630,
           alt: project.title,
-        }
-      )),
+        })),
+      ],
     },
   };
 }

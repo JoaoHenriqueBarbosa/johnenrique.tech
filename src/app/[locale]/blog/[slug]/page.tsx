@@ -149,8 +149,19 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}/blog/${params.slug}`,
         publishedTime: data.date.toISOString(),
         authors: [data.author],
+        images: data.cover
+          ? [`${process.env.NEXT_PUBLIC_SITE_URL}/${data.cover}`]
+          : [`${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`],
       },
       canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}/blog/${params.slug}`,
+      twitter: {
+        card: "summary_large_image",
+        title: data.title,
+        description: data.description,
+        images: data.cover
+          ? [`${process.env.NEXT_PUBLIC_SITE_URL}/${data.cover}`]
+          : [`${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`],
+      },
     };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') {

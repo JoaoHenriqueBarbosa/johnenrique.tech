@@ -149,10 +149,10 @@ export async function generateMetadata({
         description: data.description,                                                                                                
         type: "article",                                                                                                              
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,                                                                     
-        images: [`${process.env.NEXT_PUBLIC_SITE_URL}/${data.cover}`],                                                                             
+        images: [`${process.env.NEXT_PUBLIC_SITE_URL}/${data.cover}`],
       },                                                                                                                              
-      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,                                                                 
-    };                                                                                                                                
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
+    };
   } catch (error) {                                                                                                                   
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {                                                                         
       return {};                                                                                                                      
