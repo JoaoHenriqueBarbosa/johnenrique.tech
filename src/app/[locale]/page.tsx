@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
           alt: t('meta.title'),
         },
       ],
+      siteName: t('meta.title'),
     },
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}`,

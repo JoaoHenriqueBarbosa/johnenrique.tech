@@ -63,14 +63,24 @@ export async function generateMetadata({
         type: "article",
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}/${params.slug}`,
         publishedTime: data.date ? new Date(data.date).toISOString() : undefined,
-        images: [
-          {
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`,
-            width: 1200,
-            height: 630,
-            alt: data.title,
-          },
-        ],
+        images: data.cover
+          ? [
+              {
+                url: `${process.env.NEXT_PUBLIC_SITE_URL}/${data.cover}`,
+                width: 1200,
+                height: 630,
+                alt: data.title,
+              },
+            ]
+          : [
+              {
+                url: `${process.env.NEXT_PUBLIC_SITE_URL}/john.jpg`,
+                width: 1200,
+                height: 630,
+                alt: data.title,
+              },
+            ],
+        siteName: t("meta.title"),
       },
       canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${params.locale}/${params.slug}`,
       twitter: {

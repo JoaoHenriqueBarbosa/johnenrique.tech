@@ -220,14 +220,21 @@ export async function generateMetadata({
       description: project.description,
       type: "article",
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
-      images: project.images.map((image) => (
+      images: [
         {
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/${project.cover}`,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+        ...project.images.map((image) => ({
           url: `${process.env.NEXT_PUBLIC_SITE_URL}/${image}`,
           width: 1200,
           height: 630,
           alt: project.title,
-        }
-      )),
+        })),
+      ],
+      siteName: commonT("meta.title"),
     },
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/projects/${slug}`,
     twitter: {
