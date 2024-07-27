@@ -2,8 +2,6 @@ import { promises as fs } from "fs";
 import path from "path";
 import { Link } from "@/navigation";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { cn } from "@/lib/utils";
-import { Inter as FontSans } from "next/font/google";
 import Image from "next/image";
 import { Header } from "@/components/home-page/header";
 import { Footer } from "@/components/home-page/footer";
@@ -17,11 +15,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import matter from "gray-matter";
 import { LocaleRouteParams } from "../types";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
 
 interface BlogPost {
   slug: string;
