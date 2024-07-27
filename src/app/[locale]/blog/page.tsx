@@ -62,7 +62,14 @@ export default async function BlogIndex({
   return (
     <>
       <head>
-        <title>{t("pageTitle")}</title>
+        <title>{t("blogPage.title")}</title>
+        <meta name="description" content={t("blogPage.description")} />
+        <meta name="keywords" content={t("blogPage.keywords")} />
+        <meta property="og:title" content={t("blogPage.title")} />
+        <meta property="og:description" content={t("blogPage.description")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://yourdomain.com/${params.locale}/blog`} />
+        <link rel="canonical" href={`https://yourdomain.com/${params.locale}/blog`} />
       </head>
       <body
         className={cn(
