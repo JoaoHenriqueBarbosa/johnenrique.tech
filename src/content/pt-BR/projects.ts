@@ -8,9 +8,6 @@ export const projects = [
         readme: "https://raw.githubusercontent.com/JoaoHenriqueBarbosa/MemBot/main/README.ptBR.md",
         cover: "membot-cover.webp",
         keywords: ["IA", "assistente pessoal", "finanças", "registro de pensamentos", "acompanhamento diário"],
-        keywords: ["contraturno", "gestão", "cadastro de alunos", "cadastro de professores", "tempo real"],
-        keywords: ["PDV", "gerenciamento de inventário", "Next.js", "React", "Supabase"],
-        keywords: ["bingo", "tempo real", "Next.js", "Supabase", "jogo"],
         images: [
             "pt-BR.membot1.png",
             "pt-BR.membot2.png",
@@ -22,6 +19,7 @@ export const projects = [
         description: "Contraturno é uma solução completa para gestão de escolas de contraturno, com cadastro de alunos e professores, gerenciamento de cursos, frequência e dashboards administrativos, tudo em tempo real.",
         readme: "/content/pt-BR/readmes/afterschool.md",
         cover: "afterschool-1.webp",
+        keywords: ["contraturno", "gestão", "cadastro de alunos", "cadastro de professores", "tempo real"],
         images: [
             "afterschool-2.webp",
             "afterschool-3.webp",
@@ -37,6 +35,7 @@ export const projects = [
         github: 'https://github.com/JoaoHenriqueBarbosa/FinOpenPOS',
         readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/FinOpenPOS/main/README.ptBR.md',
         cover: 'finopenpos-2.webp',
+        keywords: ["PDV", "gerenciamento de inventário", "Next.js", "React", "Supabase"],
         images: [
             'finopenpos-1.webp',
             'finopenpos-3.webp',
@@ -54,6 +53,7 @@ export const projects = [
         github: 'https://github.com/JoaoHenriqueBarbosa/bingo-displayer',
         readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/bingo-displayer/main/README.ptBR.md',
         cover: 'bingo-2.webp',
+        keywords: ["bingo", "tempo real", "Next.js", "Supabase", "jogo"],
         images: [
             'bingo-1.webp',
             'bingo-3.webp',

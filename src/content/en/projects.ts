@@ -8,9 +8,6 @@ export const projects = [
         readme: "https://raw.githubusercontent.com/JoaoHenriqueBarbosa/MemBot/main/README.md",
         cover: "membot-cover.webp",
         keywords: ["AI", "personal assistant", "finances", "journaling", "tracking"],
-        keywords: ["after-school", "management", "student registration", "teacher registration", "real-time"],
-        keywords: ["POS", "inventory management", "Next.js", "React", "Supabase"],
-        keywords: ["bingo", "real-time", "Next.js", "Supabase", "game"],
         images: [
             "en.membot1.png",
             "en.membot2.png",
@@ -22,6 +19,7 @@ export const projects = [
         description: "AfterSchool is a comprehensive solution for after-school program management, featuring student and teacher registration, course management, attendance tracking, and administrative dashboards, all in real-time.",
         readme: "/content/en/readmes/afterschool.md",
         cover: "afterschool-1.webp",
+        keywords: ["after-school", "management", "student registration", "teacher registration", "real-time"],
         images: [
             "afterschool-2.webp",
             "afterschool-3.webp",
@@ -37,6 +35,7 @@ export const projects = [
         github: 'https://github.com/JoaoHenriqueBarbosa/FinOpenPOS',
         readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/FinOpenPOS/main/README.md',
         cover: 'finopenpos-2.webp',
+        keywords: ["POS", "inventory management", "Next.js", "React", "Supabase"],
         images: [
             'finopenpos-1.webp',
             'finopenpos-3.webp',
@@ -54,6 +53,7 @@ export const projects = [
         github: 'https://github.com/JoaoHenriqueBarbosa/bingo-displayer',
         readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/bingo-displayer/main/README.md',
         cover: 'bingo-2.webp',
+        keywords: ["bingo", "real-time", "Next.js", "Supabase", "game"],
         images: [
             'bingo-1.webp',
             'bingo-3.webp',
