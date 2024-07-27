@@ -23,6 +23,7 @@ export default async function Page({
 }) {
   unstable_setRequestLocale(params.locale);
   const contentDir = path.join(process.cwd(), "src", "content", params.locale);
+  console.log(contentDir);
   const filePath = path.join(contentDir, `${params.slug}.mdx`);
 
   const t = await getTranslations("common");
