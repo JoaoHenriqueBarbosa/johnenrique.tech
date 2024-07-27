@@ -53,7 +53,7 @@ export default async function ProjectPage({
           width={1120}
           height={630}
           quality={100}
-          className="w-full object-cover object-center h-[360px]"
+          className="w-full object-cover object-center h-[350px]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
         <div className="absolute inset-0 flex flex-col justify-center px-4">
@@ -79,7 +79,7 @@ export default async function ProjectPage({
             <h1 className="text-3xl mt-4 font-bold tracking-tight text-black md:text-5xl drop-shadow-xl">
               {project.title}
             </h1>
-            <p className="mt-4 max-w-xl text-black md:text-xl drop-shadow-xl">
+            <p className="mt-4 text-black md:text-xl drop-shadow-xl">
               {project.description}
             </p>
           </div>

@@ -75,7 +75,7 @@
   },
   "footer": {
     "aboutUs": "About Us",
-    "copyright": "© {year} John Enrique. All rights reserved.",
+    "copyright": "John Enrique, {year}",
     "quickLinks": "Quick Links",
     "home": "Home",
     "projects": "Projects",

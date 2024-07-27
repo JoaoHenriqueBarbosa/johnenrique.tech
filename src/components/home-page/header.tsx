@@ -2,7 +2,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Link } from "@/navigation";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -28,7 +28,7 @@ export function Header() {
         scroll ? "header-glass-dark" : "header-glass"
       )}
     >
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto px-3 sm:px-10 flex items-center justify-between">
         <div>
           <Link href="/" className="flex items-center gap-4">
             <Avatar className="w-12 h-12">
@@ -36,10 +36,10 @@ export function Header() {
               <AvatarFallback>{t("initials")}</AvatarFallback>
             </Avatar>
             <div>
-              <h1 className="text-2xl font-bold text-white drop-shadow-xl">
+              <h1 className="text-lg sm:text-2xl font-bold text-white drop-shadow-xl">
                 {t("name")}
               </h1>
-              <p className="text-sm text-white drop-shadow-xl">{t("role")}</p>
+              <p className="text-xs sm:text-sm text-white drop-shadow-xl">{t("role")}</p>
             </div>
           </Link>
         </div>
@@ -73,12 +73,19 @@ export function Header() {
             {t("nav.contact")}
           </Link>
           <LanguageSwitcher variant="dropdown" />
-          <Button
-            size="lg"
-            className="hidden md:inline-flex text-md ml-4 md:px-4 lg:px-8"
+          <Link
+            // @ts-ignore
+            href={pathname !== "/" ? "/#contact" : "#contact"}
+            className={cn(
+              "hidden md:inline-flex text-md ml-4 md:px-4 lg:px-8",
+              buttonVariants({
+                variant: "default",
+                size: "lg",
+              })
+            )}
           >
             {t("cta")}
-          </Button>
+          </Link>
         </nav>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
@@ -123,7 +130,16 @@ export function Header() {
               >
                 {t("nav.contact")}
               </Link>
-              <Button size="lg">{t("cta")}</Button>
+              <Link
+                // @ts-ignore
+                href={pathname !== "/" ? "/#contact" : "#contact"}
+                className={buttonVariants({
+                  variant: "default",
+                  size: "lg",
+                })}
+              >
+                {t("cta")}
+              </Link>
               <hr />
               <LanguageSwitcher variant="radio" />
             </div>

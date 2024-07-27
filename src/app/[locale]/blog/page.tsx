@@ -63,7 +63,7 @@ export default async function BlogIndex({
           width={1120}
           height={630}
           quality={100}
-          className="h-[35vh] w-full object-cover object-center md:h-[40vh]"
+          className="w-full object-cover object-center h-[350px]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
         <div className="absolute inset-0 flex flex-col justify-center px-4">
