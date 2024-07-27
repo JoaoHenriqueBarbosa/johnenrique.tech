@@ -54,6 +54,15 @@ export default async function BlogPost({
       <>
         <head>
           <title>{data.title}</title>
+          <meta name="description" content={data.description} />
+          <meta name="keywords" content={data.keywords} />
+          <meta property="og:title" content={data.title} />
+          <meta property="og:description" content={data.description} />
+          <meta property="og:type" content="article" />
+          <meta property="og:url" content={`https://yourdomain.com/${params.locale}/blog/${params.slug}`} />
+          <meta property="article:published_time" content={data.date.toISOString()} />
+          <meta property="article:author" content={data.author} />
+          <link rel="canonical" href={`https://yourdomain.com/${params.locale}/blog/${params.slug}`} />
         </head>
         <body
           className={cn(

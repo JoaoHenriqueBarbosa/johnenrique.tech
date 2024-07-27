@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 import { Inter as FontSans } from "next/font/google";
-import { useTranslations } from "next-intl";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { projects as enProjects } from "@/content/en/projects";
@@ -34,12 +33,12 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-export default function ProjectPage({
+export default async function ProjectPage({
   params: { locale, slug },
 }: LocaleRouteParams & { params: { slug: string } }) {
   unstable_setRequestLocale(locale);
-  const t = useTranslations("projectPage");
-  const commonT = useTranslations("common");
+  const t = await getTranslations("projectPage");
+  const commonT = await getTranslations("common");
 
   const projects = locale === "en" ? enProjects : ptBRProjects;
   const project = projects.find((p) => p.slug === slug);
@@ -51,7 +50,15 @@ export default function ProjectPage({
   return (
     <>
       <head>
-        <title>{project.title}</title>
+        <title>{project.title} | {commonT('meta.title')}</title>
+        <meta name="description" content={project.description} />
+        <meta name="keywords" content={project.keywords?.join(", ")} />
+        <meta property="og:title" content={`${project.title} | ${commonT('meta.title')}`} />
+        <meta property="og:description" content={project.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://yourdomain.com/${locale}/projects/${slug}`} />
+        <meta property="og:image" content={`https://yourdomain.com/${project.cover}`} />
+        <link rel="canonical" href={`https://yourdomain.com/${locale}/projects/${slug}`} />
       </head>
       <body
         className={cn(
@@ -68,7 +75,7 @@ export default function ProjectPage({
               width={1120}
               height={630}
               quality={100}
-              className="w-full object-cover object-center h-[300px] md:h-[360px]"
+              className="w-full object-cover object-center h-[360px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
             <div className="absolute inset-0 flex flex-col justify-center px-4">
@@ -159,7 +166,7 @@ export default function ProjectPage({
               </Carousel>
 
               {project.url || project.github ? (
-                <div className="flex space-x-4 mt-4 mb-8">
+                <div className="flex gap-4 mt-4 mb-8 flex-col md:flex-row">
                   {project.url && (
                     <a
                       href={project.url}
