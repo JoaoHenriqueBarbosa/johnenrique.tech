@@ -59,7 +59,7 @@ export function Header() {
             {t("nav.work")}
           </Link>
           <Link
-            href="/"
+            href="/about"
             className="text-md font-medium text-primary-foreground hover:underline drop-shadow-xl"
             prefetch={false}
           >

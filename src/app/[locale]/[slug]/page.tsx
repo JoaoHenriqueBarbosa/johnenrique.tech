@@ -4,6 +4,17 @@ import path from "path";
 import { notFound } from "next/navigation";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import matter from "gray-matter";
+import { Header } from "@/components/home-page/header";
+import { Footer } from "@/components/home-page/footer";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
+import Image from "next/image";
 
 export default async function Page({
   params,
@@ -24,8 +35,49 @@ export default async function Page({
     const source = await fs.readFile(filePath, "utf8");
     const { content, data } = matter(source);
     return (
-      <div className="prose dark:prose-invert max-w-none">
-        <MDXRemote source={content} />
+      <div className="flex flex-col min-h-dvh relative">
+        <Header />
+        <section className="relative w-full">
+          <Image
+            src="/holo-2.webp"
+            alt="Hero Image"
+            width={1120}
+            height={630}
+            quality={100}
+            className="w-full object-cover object-center h-[350px]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-10% to-60% from-muted/100 to-muted/0" />
+          <div className="absolute inset-0 flex flex-col px-4 justify-center">
+            <div className="container mx-auto">
+              <div className="h-[98px]"></div>
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">{t("home")}</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>{params.slug}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+              <h1 className="text-3xl mt-4 font-bold tracking-tight text-black md:text-5xl drop-shadow-xl">
+                {data.title}
+              </h1>
+              <p className="mt-4 text-black md:text-xl drop-shadow-xl">
+                {data.description}
+              </p>
+            </div>
+          </div>
+        </section>
+        <main className="flex-1 container mx-auto z-20 max-w-6xl">
+          <div className="px-4 pb-8">
+            <article className="prose dark:prose-invert max-w-none remark">
+              <MDXRemote source={content} />
+            </article>
+          </div>
+        </main>
+        <Footer />
       </div>
     );
   } catch (error) {
