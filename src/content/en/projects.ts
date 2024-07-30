@@ -59,6 +59,20 @@ export const projects = [
         ]
     },
     {
+        slug: 'portuscript',
+        title: 'PortuScript',
+        description: 'This is a programming language that transpiles JavaScript into Portuguese, making programming easier for Portuguese-speaking beginners.',
+        url: 'https://portuscript.vercel.app/',
+        github: 'https://github.com/JoaoHenriqueBarbosa/PortuScript-Playground',
+        readme: 'https://raw.githubusercontent.com/JoaoHenriqueBarbosa/PortuScript-Playground/main/README.en.md',
+        cover: 'portuscript-1.webp',
+        keywords: ["programming language", "JavaScript", "Portuguese", "beginners", "learning"],
+        images: [
+            'portuscript-2.webp',
+            'portuscript-3.webp',
+        ]
+    },
+    {
         slug: 'bingo-displayer',
         title: 'Bingo Displayer',
         description: 'This project is a real-time bingo game displayer built with Next.js and Supabase. It allows for a seamless bingo experience where the game can be managed on one computer and displayed on another.',
