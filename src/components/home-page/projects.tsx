@@ -58,9 +58,37 @@ export function Projects({
             description={t("moreDescription")}
             otherLink="/blog/projects"
             cover="dev.webp"
+            className="md:hidden"
           />
           )}
         </div>
+        {homePage && (
+          <Card className="hidden md:flex gap-6 p-6 items-center">
+            <Image
+              src="/dev.webp"
+              alt="Developer"
+              width={640}
+              height={360}
+              className="rounded-lg object-cover h-[150px] noremark"
+            />
+            <div className="flex flex-col justify-center space-y-4">
+              <h3 className="text-xl font-bold noremark">{t("more")}</h3>
+              <p className="text-muted-foreground noremark">{t("moreDescription")}</p>
+              <Link
+                href={{
+                  pathname: "/blog/[slug]",
+                  params: { slug: "projects" },
+                }}
+                className={cn("noremark", buttonVariants({
+                  variant: "default",
+                  size: "md",
+                }))}
+              >
+                {t("readMore")}
+              </Link>
+              </div>
+          </Card>
+        )}
       </div>
     </section>
   );
@@ -73,6 +101,7 @@ function ProjectCard({
   slug,
   cover,
   otherLink,
+  className
 }: {
   title: string;
   description: string;
@@ -80,11 +109,12 @@ function ProjectCard({
   slug?: string;
   otherLink?: string;
   cover: string;
+  className?: string;
 }) {
   const t = useTranslations("projects");
 
   return (
-    <Card className="flex flex-col z-20">
+    <Card className={cn("flex flex-col z-20", className)}>
       <CardHeader>
         <Image
           src={`/${cover}`}
