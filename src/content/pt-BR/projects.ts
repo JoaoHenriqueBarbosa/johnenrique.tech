@@ -28,6 +28,19 @@ export const projects = [
         ]
     },
     {
+        slug: "personal-website",
+        title: "Este Website",
+        description: "Este site é um portfólio pessoal construído com Next.js, React e Tailwind CSS. Ele mostra meus projetos, posts de blog e outros conteúdos.",
+        url: "https://johnenrique.tech",
+        github: "https://github.com/JoaoHenriqueBarbosa/johnenrique.tech",
+        readme: "https://raw.githubusercontent.com/JoaoHenriqueBarbosa/johnenrique.tech/main/README.ptBR.md",
+        cover: "website-1.webp",
+        keywords: ["portfolio", "Next.js", "React", "Tailwind CSS"],
+        images: [
+            "website-2.webp",
+        ]
+    },
+    {
         slug: 'finopenpos',
         title: 'FinOpenPOS',
         description: 'Este é um Sistema de Ponto de Venda (PDV ou POS em inglês) e Gerenciamento de Inventário construído com Next.js, React e Supabase. Ele oferece uma solução completa para gerenciar produtos, clientes, pedidos e transações em um ambiente de varejo ou pequeno negócio.',

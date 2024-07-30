@@ -28,6 +28,19 @@ export const projects = [
         ]
     },
     {
+        slug: "personal-website",
+        title: "This Website",
+        description: "This website is a personal portfolio built with Next.js, React, and Tailwind CSS. It showcases my projects, blog posts, and other content.",
+        url: "https://johnenrique.tech",
+        github: "https://github.com/JoaoHenriqueBarbosa/johnenrique.tech",
+        readme: "https://raw.githubusercontent.com/JoaoHenriqueBarbosa/johnenrique.tech/main/README.md",
+        cover: "website-1.webp",
+        keywords: ["portfolio", "Next.js", "React", "Tailwind CSS"],
+        images: [
+            "website-2.webp",
+        ]
+    },
+    {
         slug: 'finopenpos',
         title: 'FinOpenPOS',
         description: 'This is a Point of Sale (POS) and Inventory Management System built with Next.js, React, and Supabase. It offers a comprehensive solution for managing products, customers, orders, and transactions in a retail or small business environment.',
