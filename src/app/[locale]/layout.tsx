@@ -59,6 +59,9 @@ export default async function RootLayout({
           type="image/png"
           sizes="512x512"
         />
+        {process.env.GA_TRACKING_ID && (
+          <GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
+        )}
       </head>
       <NextIntlClientProvider messages={messages}>
         <body
@@ -69,9 +72,6 @@ export default async function RootLayout({
         >
           {children}
         </body>
-        {process.env.GA_TRACKING_ID && (
-          <GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
-        )}
       </NextIntlClientProvider>
     </html>
   );
