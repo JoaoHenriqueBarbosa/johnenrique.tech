@@ -1,9 +1,11 @@
 "use client";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 
-const GoogleAnalytics = ({ GA_TRACKING_ID }: { GA_TRACKING_ID: string }) => {
+const JEAnalytics = ({ GA_TRACKING_ID }: { GA_TRACKING_ID: string }) => {
   return (
     <>
+      <Analytics />
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         strategy="afterInteractive"
@@ -21,4 +23,4 @@ const GoogleAnalytics = ({ GA_TRACKING_ID }: { GA_TRACKING_ID: string }) => {
   );
 };
 
-export default GoogleAnalytics;
+export default JEAnalytics;

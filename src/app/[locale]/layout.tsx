@@ -5,7 +5,7 @@ import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
-import GoogleAnalytics from "@/components/ga";
+import JEAnalytics from "@/components/analytics";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -60,7 +60,7 @@ export default async function RootLayout({
           sizes="512x512"
         />
         {process.env.GA_TRACKING_ID && (
-          <GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
+          <JEAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
         )}
       </head>
       <NextIntlClientProvider messages={messages}>
