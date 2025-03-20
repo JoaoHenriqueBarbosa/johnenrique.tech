@@ -2,7 +2,8 @@
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 
-const JEAnalytics = ({ GA_TRACKING_ID }: { GA_TRACKING_ID: string }) => {
+const JEAnalytics = ({ GA_TRACKING_ID }: { GA_TRACKING_ID?: string }) => {
+  if (!GA_TRACKING_ID) return <Analytics />;
   return (
     <>
       <Analytics />

@@ -59,9 +59,7 @@ export default async function RootLayout({
           type="image/png"
           sizes="512x512"
         />
-        {process.env.GA_TRACKING_ID && (
-          <JEAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
-        )}
+        <JEAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
       </head>
       <NextIntlClientProvider messages={messages}>
         <body
